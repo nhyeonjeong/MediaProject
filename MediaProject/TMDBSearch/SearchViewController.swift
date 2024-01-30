@@ -10,10 +10,11 @@ import SnapKit
 
 class SearchViewController: UIViewController {
     // 섹션에 해보기
-    let sectiontitleLabel = UILabel()
     let tableView = UITableView()
+    /// 섹션에 나올 타이틀
+    let sectionTitleList = ["TV Trend", "TV TopRated", "TV Popular"]
+    var trendList: [Result] = []
     
-    let list = ["start", "hey", "hahah", "ho"]
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -22,6 +23,16 @@ class SearchViewController: UIViewController {
         configureView()
         
         configureTableView()
+        
+        fetchTMDB()
+    }
+    
+    func fetchTMDB() {
+        TMDBAPIManager.shared.fetchTVTrend { results in
+            self.trendList = results
+            self.tableView.reloadData()
+            
+        }
     }
 }
 
@@ -31,7 +42,9 @@ extension SearchViewController {
     }
     
     func configureView() {
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .red
+        
+
     }
     
     func configureConstraints() {
@@ -42,42 +55,51 @@ extension SearchViewController {
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return list.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return list[section]
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath)
-        
-        return cell
-    }
-    
     func configureTableView() {
-        tableView.rowHeight = 200
+        tableView.rowHeight = 180
         
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: "SearchTableViewCell")
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionTitleList.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitleList[section]
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1 // 섹션마다 셀은 한 개
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
+        
+        cell.collectionView.delegate = self
+        cell.collectionView.dataSource = self
+        cell.collectionView.reloadData() // api통신후 tableview를 갱신하면서 collectionview도 갱신해야한다.
+        
+        return cell
+    }
+    
 }
-//
-//extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        <#code#>
-//    }
-//    
-//    
-//}
+
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return trendList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.section == 0 {
+            
+        }
+    }
+    
+    
+}
