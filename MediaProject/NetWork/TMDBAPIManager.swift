@@ -15,7 +15,7 @@ class TMDBAPIManager {
     }
     static let shared = TMDBAPIManager()
     
-    func fetchTVTrend(completionHandler: @escaping ([Result]) -> Void) {
+    func fetchTVTrend(completionHandler: @escaping ([Trend]) -> Void) {
         // enum으로 리팩토링할것!!!!
         let url = "https://api.themoviedb.org/3/trending/tv/week?language=ko-KR"
         let header: HTTPHeaders = ["Authorization": APIKey.tmdbAuth]
@@ -26,19 +26,44 @@ class TMDBAPIManager {
                 print(success)
                 completionHandler(success.results)
             case .failure(let failure):
-                print("tlfvo")
+                
                 print(failure)
             }
         }
     }
     
-    func fetchTVTopRated() {
+    func fetchTVTopRated(completionHandler: @escaping ([TopRated]) -> Void) {
         let url = "https://api.themoviedb.org/3/tv/top_rated?language=ko-KR"
+        
+        let header: HTTPHeaders = ["Authorization": APIKey.tmdbAuth]
+        
+        AF.request(url, headers: header).responseDecodable(of: TVTopRatedModel.self) { response in
+            switch response.result {
+            case .success(let success):
+                print(success)
+                completionHandler(success.results)
+            case .failure(let failure):
+                
+                print(failure)
+            }
+        }
         
     }
     
-    func fetchTVPopular() {
+    func fetchTVPopular(completionHandler: @escaping ([Popular]) -> Void) {
         let url = "https://api.themoviedb.org/3/tv/popular?language=ko-KR"
+        let header: HTTPHeaders = ["Authorization": APIKey.tmdbAuth]
         
+        AF.request(url, headers: header).responseDecodable(of: TVPopularModel.self) { response in
+            switch response.result {
+            case .success(let success):
+                print("---=====")
+                print(success)
+                completionHandler(success.results)
+            case .failure(let failure):
+                print("---=====")
+                print(failure)
+            }
+        }
     }
 }

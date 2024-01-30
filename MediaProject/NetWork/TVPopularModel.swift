@@ -1,5 +1,5 @@
 //
-//  TVTrendModel.swift
+//  TVPopularModel.swift
 //  MediaProject
 //
 //  Created by 남현정 on 2024/01/30.
@@ -7,22 +7,22 @@
 
 import Foundation
 
-struct TVTrendModel: Decodable {
-    let results: [Trend]
+struct TVPopularModel: Decodable {
+    let results: [Popular]
 }
 
-struct Trend: Decodable {
-    let backdrop_path: String
+struct Popular: Decodable {
     let name: String
     let overview: String
-    let posterImage: String
     let popularity: Double
+    let posterImage: String? // 여기가 nil일수도 있었다..
+    let backdrop: String
     
     enum CodingKeys: String, CodingKey {
-        case backdrop_path
         case name = "original_name"
         case overview
-        case posterImage = "poster_path"
         case popularity
+        case posterImage = "poster_path"
+        case backdrop = "backdrop_path"
     }
 }

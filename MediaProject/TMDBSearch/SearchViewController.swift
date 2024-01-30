@@ -14,7 +14,9 @@ class SearchViewController: UIViewController {
     let tableView = UITableView()
     /// 섹션에 나올 타이틀
     let sectionTitleList = ["TV Trend", "TV TopRated", "TV Popular"]
-    var trendList: [Result] = []
+    var trendList: [Trend] = []
+    var topRatedList: [TopRated] = []
+    var popularList: [Popular] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,19 @@ class SearchViewController: UIViewController {
             self.tableView.reloadData()
             
         }
+        
+        TMDBAPIManager.shared.fetchTVTopRated { results in
+            self.topRatedList = results
+            self.tableView.reloadData()
+        }
+        
+        TMDBAPIManager.shared.fetchTVPopular { results in
+            self.popularList = results
+            self.tableView.reloadData()
+        }
     }
+    
+    
 }
 
 extension SearchViewController {
@@ -81,6 +95,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.collectionView.delegate = self
         cell.collectionView.dataSource = self
+        print("section", indexPath.section)
+        cell.collectionView.tag = indexPath.section // 태그 지정
+        
         cell.collectionView.reloadData() // api통신후 tableview를 갱신하면서 collectionview도 갱신해야한다.
         
         return cell
@@ -92,34 +109,49 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return trendList.count
+        if collectionView.tag == 0 {
+            return trendList.count
+        } else if collectionView.tag == 1 {
+            return topRatedList.count
+        } else if collectionView.tag == 2 {
+            return popularList.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as! SearchCollectionViewCell
         
-        if indexPath.section == 0 {
+    
+        if collectionView.tag == 0 {
             let item = trendList[indexPath.item]
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.posterImage)")
             cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
             
-            return cell
-            
-        } else if indexPath.section == 1 {
-            let item = trendList[indexPath.item]
+ 
+        } else if collectionView.tag == 1 {
+            let item = topRatedList[indexPath.item]
+            print("top", item.posterImage)
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.posterImage)")
             cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
+
+
+        } else if collectionView.tag == 2 {
+            print("222222222222")
+            let item = popularList[indexPath.item]
+            if let image = item.posterImage {
+                print("1", image)
+                let url = URL(string: "https://image.tmdb.org/t/p/w500\(image)")
+                cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
+            } else {
+                print("2", item.backdrop)
+                let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.backdrop)")
+                cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
+            }
             
-            return cell
-        } else if indexPath.section == 2 {
-            let item = trendList[indexPath.item]
-            let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.posterImage)")
-            cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
-            
-            return cell
-        } else {
-            return cell
         }
+
+        return cell
     }
     
     

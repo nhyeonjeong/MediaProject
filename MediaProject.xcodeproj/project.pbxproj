@@ -24,6 +24,8 @@
 		8B5A3F602B68F27E00B7DD22 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F5F2B68F27E00B7DD22 /* SearchTableViewCell.swift */; };
 		8B5A3F632B69199F00B7DD22 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F622B69199F00B7DD22 /* SearchCollectionViewCell.swift */; };
 		8B5A3F662B69358400B7DD22 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8B5A3F652B69358400B7DD22 /* Kingfisher */; };
+		8B5A3F682B693C3500B7DD22 /* TVTopRatedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F672B693C3500B7DD22 /* TVTopRatedModel.swift */; };
+		8B5A3F6A2B6941A500B7DD22 /* TVPopularModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F692B6941A500B7DD22 /* TVPopularModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		8B5A3F5C2B68F12900B7DD22 /* TVTrendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTrendModel.swift; sourceTree = "<group>"; };
 		8B5A3F5F2B68F27E00B7DD22 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		8B5A3F622B69199F00B7DD22 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchCollectionViewCell.swift; path = MediaProject/SearchCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		8B5A3F672B693C3500B7DD22 /* TVTopRatedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTopRatedModel.swift; sourceTree = "<group>"; };
+		8B5A3F692B6941A500B7DD22 /* TVPopularModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVPopularModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				8B5A3F4F2B68DE5300B7DD22 /* TMDBAPIManager.swift */,
 				8B5A3F5A2B68F05A00B7DD22 /* APIKey.swift */,
 				8B5A3F5C2B68F12900B7DD22 /* TVTrendModel.swift */,
+				8B5A3F672B693C3500B7DD22 /* TVTopRatedModel.swift */,
+				8B5A3F692B6941A500B7DD22 /* TVPopularModel.swift */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -211,7 +217,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B5A3F682B693C3500B7DD22 /* TVTopRatedModel.swift in Sources */,
 				8B5A3F572B68EBF400B7DD22 /* SearchViewController.swift in Sources */,
+				8B5A3F6A2B6941A500B7DD22 /* TVPopularModel.swift in Sources */,
 				8B5A3F502B68DE5300B7DD22 /* TMDBAPIManager.swift in Sources */,
 				8B5A3F372B68DD9700B7DD22 /* ViewController.swift in Sources */,
 				8B5A3F5D2B68F12900B7DD22 /* TVTrendModel.swift in Sources */,
