@@ -18,7 +18,16 @@ class TMDBAPIManager {
     func fetchTVTrend() {
         // enum으로 리팩토링할것!!!!
         let url = "https://api.themoviedb.org/3/trending/tv/week?language=ko-KR"
-//        let header: HTTPHeader = ["Authrization": ]
+        let header: HTTPHeaders = ["Authrization": APIKey.tmdbAuth]
+        
+        AF.request(url, headers: header).responseDecodable(of: TVTrendModel.self) { response in
+            switch response.result {
+            case .success(let success):
+                print(success)
+            case .failure(let failure):
+                print(failure)
+            }
+        }
     }
     
     func fetchTVTopRated() {
