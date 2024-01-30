@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SearchCollectionViewCell: UICollectionViewCell {
     
@@ -13,6 +14,25 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configureHierarchy()
+        configureConstraints()
+        configureView()
+        
+    }
+    
+    func configureHierarchy() {
+        contentView.addSubview(posterImageView)
+    }
+    
+    func configureConstraints() {
+        posterImageView.snp.makeConstraints { make in
+            make.edges.equalTo(contentView).inset(10)
+        }
+    }
+    
+    func configureView() {
+        posterImageView.contentMode = .scaleAspectFill
+        
     }
     
     required init?(coder: NSCoder) {

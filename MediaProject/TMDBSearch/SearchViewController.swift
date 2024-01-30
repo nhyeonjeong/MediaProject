@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class SearchViewController: UIViewController {
     // 섹션에 해보기
@@ -95,9 +96,29 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as! SearchCollectionViewCell
         
         if indexPath.section == 0 {
+            let item = trendList[indexPath.item]
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.posterImage)")
+            cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
             
+            return cell
+            
+        } else if indexPath.section == 1 {
+            let item = trendList[indexPath.item]
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.posterImage)")
+            cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
+            
+            return cell
+        } else if indexPath.section == 2 {
+            let item = trendList[indexPath.item]
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.posterImage)")
+            cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
+            
+            return cell
+        } else {
+            return cell
         }
     }
     
