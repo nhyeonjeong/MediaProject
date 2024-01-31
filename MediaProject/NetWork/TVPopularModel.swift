@@ -16,7 +16,7 @@ struct Popular: Decodable {
     let overview: String
     let popularity: Double
     let posterImage: String? // 여기가 nil일수도 있었다..
-    let backdrop: String
+    let backdrop: String?
     
     enum CodingKeys: String, CodingKey {
         case name = "original_name"
