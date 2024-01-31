@@ -114,6 +114,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         } else if collectionView.tag == 1 {
             return topRatedList.count
         } else if collectionView.tag == 2 {
+            print("popular", popularList.count)
             return popularList.count
         }
         return 0
@@ -145,8 +146,8 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
             } else {
                 print("2", item.backdrop)
-                let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.backdrop)")
-                cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
+//                let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.backdrop)")
+                cell.posterImageView.image = UIImage(systemName: "star.fill")
             }
             
         }
