@@ -8,16 +8,14 @@
 import Foundation
 import Alamofire
 class TMDBAPIManager {
-    enum url {
-//        let baseUrl = "https://api.themoviedb.org/3/"
-//        
-//        case tvtrend = "trending/tv/"
-    }
+    
     static let shared = TMDBAPIManager()
+    
+    let baseURL = "https://api.themoviedb.org/3/"
     
     func fetchTVTrend(completionHandler: @escaping ([Trend]) -> Void) {
         // enum으로 리팩토링할것!!!!
-        let url = "https://api.themoviedb.org/3/trending/tv/week?language=ko-KR"
+        let url = "\(baseURL)trending/tv/week?language=ko-KR"
         let header: HTTPHeaders = ["Authorization": APIKey.tmdbAuth]
         
         AF.request(url, headers: header).responseDecodable(of: TVTrendModel.self) { response in
@@ -33,7 +31,7 @@ class TMDBAPIManager {
     }
     
     func fetchTVTopRated(completionHandler: @escaping ([TopRated]) -> Void) {
-        let url = "https://api.themoviedb.org/3/tv/top_rated?language=ko-KR"
+        let url = "\(baseURL)tv/top_rated?language=ko-KR"
         
         let header: HTTPHeaders = ["Authorization": APIKey.tmdbAuth]
         
@@ -51,7 +49,7 @@ class TMDBAPIManager {
     }
     
     func fetchTVPopular(completionHandler: @escaping ([Popular]) -> Void) {
-        let url = "https://api.themoviedb.org/3/tv/popular?language=ko-KR"
+        let url = "\(baseURL)tv/popular?language=ko-KR"
         let header: HTTPHeaders = ["Authorization": APIKey.tmdbAuth]
         
         AF.request(url, headers: header).responseDecodable(of: TVPopularModel.self) { response in
@@ -65,5 +63,12 @@ class TMDBAPIManager {
                 print(failure)
             }
         }
+    }
+    
+}
+
+extension TMDBAPIManager {
+    func fetchTVDetails() {
+        let url = "\(baseURL)tv/"
     }
 }
