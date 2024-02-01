@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+
 class TMDBAPIManager {
     
     static let shared = TMDBAPIManager()

@@ -138,7 +138,7 @@ extension TVGroupViewController: UICollectionViewDelegate, UICollectionViewDataS
 
 
         } else if collectionView.tag == 2 {
-            print("222222222222")
+
             let item = popularList[indexPath.item]
             if let image = item.posterImage {
                 print("1", image)

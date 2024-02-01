@@ -12,7 +12,7 @@ struct TVModels: Decodable {
 }
 
 struct TV: Decodable {
-    let id: String
+//    let id: String
     let name: String
     let overview: String
     let popularity: Double
@@ -20,7 +20,7 @@ struct TV: Decodable {
     let backdrop: String?
     
     enum CodingKeys: String, CodingKey {
-        case id
+//        case id
         case name = "original_name"
         case overview
         case popularity
