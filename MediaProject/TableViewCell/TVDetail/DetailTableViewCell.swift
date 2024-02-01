@@ -15,9 +15,7 @@ class DetailTableViewCell: UITableViewCell {
         let collectionView = UICollectionView(frame: .zero
                                               , collectionViewLayout: DetailTableViewCell.configureCollectionViewLayout())
         collectionView.backgroundColor = .black
-        
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
+    
         return collectionView
     }()
     

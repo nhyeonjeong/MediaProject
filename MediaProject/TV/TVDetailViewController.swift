@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class DetailViewController: UIViewController {
+class TVDetailViewController: UIViewController {
     
     lazy var tvTableView: UITableView = {
         let tableView = UITableView()
@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
     
 }
 
-extension DetailViewController {
+extension TVDetailViewController {
     func configureHierarchy() {
         view.addSubview(tvTableView)
     }
@@ -45,7 +45,7 @@ extension DetailViewController {
 }
 
 
-extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
@@ -54,22 +54,28 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! DetailTableViewCell
         
+        cell.collectionView.delegate = self
+        cell.collectionView.dataSource = self
+        cell.collectionView.register(DetailCollectionViewCell.self, forCellWithReuseIdentifier: "DetailCollectionViewCell")
+        
         return cell
     }
     
     
 }
 
-//extension DetailTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 10
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath)
-//    }
-//    
-//    
-//    
-//}
+extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as! DetailCollectionViewCell
+        
+        return cell
+    }
+    
+    
+    
+}
 
