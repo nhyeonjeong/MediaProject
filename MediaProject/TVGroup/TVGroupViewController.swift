@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class SearchViewController: UIViewController {
+class TVGroupViewController: UIViewController {
     // 섹션에 해보기
     let tableView = UITableView()
     /// 섹션에 나올 타이틀
@@ -51,7 +51,7 @@ class SearchViewController: UIViewController {
     
 }
 
-extension SearchViewController {
+extension TVGroupViewController {
     func configureHierarchy() {
         view.addSubview(tableView)
     }
@@ -69,7 +69,7 @@ extension SearchViewController {
     }
 }
 
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+extension TVGroupViewController: UITableViewDelegate, UITableViewDataSource {
     func configureTableView() {
         tableView.rowHeight = 180
         
@@ -105,7 +105,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TVGroupViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -138,7 +138,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
 
         } else if collectionView.tag == 2 {
-            print("222222222222")
+
             let item = popularList[indexPath.item]
             if let image = item.posterImage {
                 print("1", image)
