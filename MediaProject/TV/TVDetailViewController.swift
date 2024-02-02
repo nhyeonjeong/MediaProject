@@ -14,18 +14,30 @@ class TVDetailViewController: UIViewController {
     lazy var tvTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .black
-        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "DetailTableViewCell")
+        // 추천 테이블뷰셀
+        tableView.register(TVDetailRecommendTableViewCell.self, forCellReuseIdentifier: "TVDetailRecommendTableViewCell")
+        // 드라마 디테일 테이블뷰셀
+        tableView.register(TVDetailTableViewCell.self, forCellReuseIdentifier: "TVDetailTableViewCell")
+        // 드라마 캐스팅 정보 테이블뷰셀
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 180
+//        tableView.rowHeight = 280
+        tableView.rowHeight = UITableView.automaticDimension // 유동적으로 높이 늘어나도록
         
         return tableView
     }()
 
-    let list = ["tv정보", "비슷한 콘텐츠 추천", "캐스팅 정보"]
+    let list = ["TV정보", "비슷한 콘텐츠 추천", "캐스팅 정보"]
     
-    /// 추천하는 드라마 배열
+    /// 추천하는 드라마 리스트
     var recommentList: [TV] = []
+    /// 드라마 상세소개
+    var detailData: TVDetailModel = TVDetailModel(name: "", overview: "", posterImage: "", popularity: 0, backdrop_path: "", homepageUrl: "", episodeNumber: 0)
+    
+    /// 드라마 캐스팅 정보 리스트
+    var castingLiat: [TVCast] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +61,17 @@ class TVDetailViewController: UIViewController {
             group.leave()
         }
         
+        group.enter()
+        TMDBAPIManager.shared.fetchTVDetails { detail in
+            self.detailData = detail
+            group.leave()
+        }
+        
+//        group.enter()
+//        TMDBAPIManager.shared.fetchTVAggregate { casts in
+//            self.castingLiat = casts
+//            group.leave()
+//        }
         
         group.notify(queue: .main) {
             self.tvTableView.reloadData()
@@ -77,18 +100,46 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! DetailTableViewCell
         
-        cell.groupTitle.text = list[indexPath.row]
-        cell.collectionView.delegate = self
-        cell.collectionView.dataSource = self
-        cell.collectionView.register(TVRecommendCollectionViewCell.self, forCellWithReuseIdentifier: "DetailCollectionViewCell")
+        if indexPath.row == 0 {
+            print("tableView0")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TVDetailTableViewCell", for: indexPath) as! TVDetailTableViewCell
+            cell.groupTitle.text = list[indexPath.row]
+            
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(detailData.posterImage)")
+            cell.posterImageVies.kf.setImage(with: url)
+            
+            cell.titleLabel.text = detailData.name
+            cell.popularityLabel.text = "\(detailData.popularity) 점"
+            cell.overviewLabel.text = detailData.overview
+   
+            return cell
+            
+        } else if indexPath.row == 1 {
+            print("tableView1")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TVDetailRecommendTableViewCell", for: indexPath) as! TVDetailRecommendTableViewCell
+            cell.groupTitle.text = list[indexPath.row]
+            cell.collectionView.delegate = self
+            cell.collectionView.dataSource = self
+            cell.collectionView.register(TVRecommendCollectionViewCell.self, forCellWithReuseIdentifier: "TVRecommendCollectionViewCell")
+            
+            cell.collectionView.reloadData()
+                
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TVDetailRecommendTableViewCell", for: indexPath) as! TVDetailRecommendTableViewCell
+            cell.groupTitle.text = "\(detailData.name)의 \(list[indexPath.row])"
+            cell.collectionView.delegate = self
+            cell.collectionView.dataSource = self
+            cell.collectionView.register(TVRecommendCollectionViewCell.self, forCellWithReuseIdentifier: "TVRecommendCollectionViewCell")
+            
+            cell.collectionView.reloadData()
+                
+            return cell
+        }
         
-        cell.collectionView.reloadData()
-        return cell
     }
-    
-    
+
 }
 
 extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -97,7 +148,7 @@ extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as! TVRecommendCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVRecommendCollectionViewCell", for: indexPath) as! TVRecommendCollectionViewCell
         
         if let image = recommentList[indexPath.item].posterImage {
             let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(image)")

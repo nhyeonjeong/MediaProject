@@ -8,12 +8,13 @@
 import UIKit
 import SnapKit
 
-class DetailTableViewCell: UITableViewCell {
+class TVDetailRecommendTableViewCell: UITableViewCell {
     
     let groupTitle = UILabel()
+    
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero
-                                              , collectionViewLayout: DetailTableViewCell.configureCollectionViewLayout())
+                                              , collectionViewLayout: TVDetailRecommendTableViewCell.configureCollectionViewLayout())
         collectionView.backgroundColor = .black
     
         return collectionView
@@ -21,7 +22,7 @@ class DetailTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .clear
+        contentView.backgroundColor = .black
 
         configureHierarchy()
         configureConstraints()
@@ -31,12 +32,10 @@ class DetailTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
+
 }
 
-extension DetailTableViewCell {
+extension TVDetailRecommendTableViewCell {
     
     func configureHierarchy() {
         contentView.addSubview(groupTitle)
@@ -46,27 +45,28 @@ extension DetailTableViewCell {
     func configureConstraints() {
         groupTitle.snp.makeConstraints { make in
             make.top.leading.equalTo(contentView).inset(10)
-            make.height.equalTo(22)
+            make.height.equalTo(20)
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(groupTitle.snp.bottom).inset(4)
+            make.top.equalTo(groupTitle.snp.bottom).offset(10)
             make.horizontalEdges.bottom.equalTo(contentView)
+            make.height.equalTo(230) // 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
         }
     }
     
     func configureView() {
-        groupTitle.font = .boldSystemFont(ofSize: 15)
+        groupTitle.font = .boldSystemFont(ofSize: 18)
         groupTitle.textColor = .white
     }
     
     static func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 130, height: 180) // 추천 드라마 셀의 크기
-        layout.minimumLineSpacing = 0
+        layout.itemSize = CGSize(width: 130, height: 230) // 추천 드라마 셀의 크기
+        layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
         layout.scrollDirection = .horizontal
         return layout
