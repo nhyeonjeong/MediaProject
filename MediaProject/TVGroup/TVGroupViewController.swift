@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class TVGroupViewController: UIViewController {
+class TVGroupViewController: BaseViewController {
     // 섹션에 해보기
     let tableView = UITableView()
     /// 섹션에 나올 타이틀
@@ -21,12 +21,7 @@ class TVGroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        configureHierarchy()
-        configureConstraints()
-        configureView()
-        
         configureTableView()
-        
         fetchTMDB()
     }
     
@@ -48,25 +43,23 @@ class TVGroupViewController: UIViewController {
         }
     }
     
-    
-}
-
-extension TVGroupViewController {
-    func configureHierarchy() {
+    // BaseViewController
+    override func configureHierarchy() {
         view.addSubview(tableView)
     }
     
-    func configureView() {
+    override func configureView() {
         tableView.backgroundColor = .red
         
 
     }
     
-    func configureConstraints() {
+    override func configureConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
+    
 }
 
 extension TVGroupViewController: UITableViewDelegate, UITableViewDataSource {
