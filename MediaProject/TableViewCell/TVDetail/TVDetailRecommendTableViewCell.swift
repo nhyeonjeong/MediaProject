@@ -13,11 +13,11 @@ class TVDetailRecommendTableViewCell: UITableViewCell {
     let groupTitle = UILabel()
     
     lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero
+        let view = UICollectionView(frame: .zero
                                               , collectionViewLayout: TVDetailRecommendTableViewCell.configureCollectionViewLayout())
-        collectionView.backgroundColor = .black
+        view.backgroundColor = .black
     
-        return collectionView
+        return view
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

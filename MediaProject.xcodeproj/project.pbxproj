@@ -34,6 +34,7 @@
 		8B5A3F912B6BD80F00B7DD22 /* TVCastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F902B6BD80F00B7DD22 /* TVCastModel.swift */; };
 		8B5A3F992B6CF0FA00B7DD22 /* TVDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F982B6CF0FA00B7DD22 /* TVDetailTableViewCell.swift */; };
 		8B5A3F9B2B6D3F3D00B7DD22 /* TVDetailCastingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F9A2B6D3F3D00B7DD22 /* TVDetailCastingTableViewCell.swift */; };
+		8B5A3F9D2B6E001000B7DD22 /* TVDetailCastingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F9C2B6E001000B7DD22 /* TVDetailCastingCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		8B5A3F902B6BD80F00B7DD22 /* TVCastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCastModel.swift; sourceTree = "<group>"; };
 		8B5A3F982B6CF0FA00B7DD22 /* TVDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailTableViewCell.swift; sourceTree = "<group>"; };
 		8B5A3F9A2B6D3F3D00B7DD22 /* TVDetailCastingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailCastingTableViewCell.swift; sourceTree = "<group>"; };
+		8B5A3F9C2B6E001000B7DD22 /* TVDetailCastingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailCastingCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				8B5A3F822B6A8C7700B7DD22 /* TVRecommendCollectionViewCell.swift */,
+				8B5A3F9C2B6E001000B7DD22 /* TVDetailCastingCollectionViewCell.swift */,
 			);
 			path = TVDetail;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				8B5A3F5B2B68F05A00B7DD22 /* APIKey.swift in Sources */,
 				8B5A3F352B68DD9700B7DD22 /* SceneDelegate.swift in Sources */,
 				8B5A3F632B69199F00B7DD22 /* SearchCollectionViewCell.swift in Sources */,
+				8B5A3F9D2B6E001000B7DD22 /* TVDetailCastingCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

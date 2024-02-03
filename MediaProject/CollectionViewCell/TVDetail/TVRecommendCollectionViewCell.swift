@@ -59,7 +59,7 @@ extension TVRecommendCollectionViewCell {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(posterImageView.snp.bottom).offset(8) // inset이 아니고 offset이구나..! 이해 완.
+            make.top.equalTo(posterImageView.snp.bottom).offset(8) // inset이 아니고 offset이구나..! 이해 완. offset이 원하는 만큼 안나오는 이유? OFFSET(4) titleLabel이 가려짐
             make.horizontalEdges.equalTo(contentView)
             
         

@@ -9,14 +9,14 @@ import Foundation
 
 // 캐스팅 정보
 struct TVCastModel: Decodable {
-    let results: [TVCast]
+    let cast: [TVCast]
 }
 
 struct TVCast: Decodable {
     let name: String // 배우 이름
     let popularity: Double
     let profile: String
-    let roles: Role // 배역 이름
+    let roles: [Role] // 배역 이름
     
     enum CodingKeys: String, CodingKey {
         case name

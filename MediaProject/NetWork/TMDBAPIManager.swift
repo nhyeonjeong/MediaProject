@@ -93,7 +93,7 @@ extension TMDBAPIManager {
                 completionHandler(success.results)
             case .failure(let failure):
                 
-                print(failure)
+                dump(failure)
             }
         }
     }
@@ -107,7 +107,7 @@ extension TMDBAPIManager {
             case .success(let success):
                 
                 print(success)
-                completionHandler(success.results)
+                completionHandler(success.cast)
             case .failure(let failure):
                 
                 print(failure)

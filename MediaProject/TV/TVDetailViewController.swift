@@ -19,7 +19,7 @@ class TVDetailViewController: UIViewController {
         // 드라마 디테일 테이블뷰셀
         tableView.register(TVDetailTableViewCell.self, forCellReuseIdentifier: "TVDetailTableViewCell")
         // 드라마 캐스팅 정보 테이블뷰셀
-        
+        tableView.register(TVDetailCastingTableViewCell.self, forCellReuseIdentifier: "TVDetailCastingTableViewCell")
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -37,7 +37,7 @@ class TVDetailViewController: UIViewController {
     var detailData: TVDetailModel = TVDetailModel(name: "", overview: "", posterImage: "", popularity: 0, backdrop_path: "", homepageUrl: "", episodeNumber: 0)
     
     /// 드라마 캐스팅 정보 리스트
-    var castingLiat: [TVCast] = []
+    var castingList: [TVCast] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,13 +67,14 @@ class TVDetailViewController: UIViewController {
             group.leave()
         }
         
-//        group.enter()
-//        TMDBAPIManager.shared.fetchTVAggregate { casts in
-//            self.castingLiat = casts
-//            group.leave()
-//        }
+        group.enter()
+        TMDBAPIManager.shared.fetchTVAggregate { casts in
+            self.castingList = casts
+            group.leave()
+        }
         
         group.notify(queue: .main) {
+
             self.tvTableView.reloadData()
         }
     }
@@ -100,9 +101,9 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        // 드라마 디테일 정보뷰
         if indexPath.row == 0 {
-            print("tableView0")
+
             let cell = tableView.dequeueReusableCell(withIdentifier: "TVDetailTableViewCell", for: indexPath) as! TVDetailTableViewCell
             cell.groupTitle.text = list[indexPath.row]
             
@@ -115,24 +116,26 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
    
             return cell
             
-        } else if indexPath.row == 1 {
-            print("tableView1")
+        } else if indexPath.row == 1 { // 비슷한 컨틴츠 추천
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "TVDetailRecommendTableViewCell", for: indexPath) as! TVDetailRecommendTableViewCell
             cell.groupTitle.text = list[indexPath.row]
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             cell.collectionView.register(TVRecommendCollectionViewCell.self, forCellWithReuseIdentifier: "TVRecommendCollectionViewCell")
-            
+            cell.collectionView.tag = 1 // 태그 붙이기
             cell.collectionView.reloadData()
                 
             return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TVDetailRecommendTableViewCell", for: indexPath) as! TVDetailRecommendTableViewCell
+            
+        } else { // 캐스팅 정보
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TVDetailCastingTableViewCell", for: indexPath) as! TVDetailCastingTableViewCell
             cell.groupTitle.text = "\(detailData.name)의 \(list[indexPath.row])"
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
-            cell.collectionView.register(TVRecommendCollectionViewCell.self, forCellWithReuseIdentifier: "TVRecommendCollectionViewCell")
-            
+            cell.collectionView.register(TVDetailCastingCollectionViewCell.self, forCellWithReuseIdentifier: "TVDetailCastingCollectionViewCell")
+            cell.collectionView.tag = 2 // 태그 붙이기
             cell.collectionView.reloadData()
                 
             return cell
@@ -144,22 +147,37 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recommentList.count
+        if collectionView.tag == 1 {
+            return recommentList.count
+        } else { // Tag가 2라면?
+            return castingList.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVRecommendCollectionViewCell", for: indexPath) as! TVRecommendCollectionViewCell
-        
-        if let image = recommentList[indexPath.item].posterImage {
-            let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(image)")
-            cell.posterImageView.kf.setImage(with: imageUrl)
+        if collectionView.tag == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVRecommendCollectionViewCell", for: indexPath) as! TVRecommendCollectionViewCell
+            
+            if let image = recommentList[indexPath.item].posterImage {
+                let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(image)")
+                cell.posterImageView.kf.setImage(with: imageUrl)
+            } else {
+                cell.posterImageView.image = UIImage(systemName: "xmark.app.fill")
+            }
+            
+            
+            cell.titleLabel.text = recommentList[indexPath.item].name
+            return cell
         } else {
-            cell.posterImageView.image = UIImage(systemName: "xmark.app.fill")
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVDetailCastingCollectionViewCell", for: indexPath) as! TVDetailCastingCollectionViewCell
+
+            let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(castingList[indexPath.item].profile)")
+            cell.actressImageView.kf.setImage(with: imageUrl, placeholder: UIImage(systemName: "xmark"))
+  
+            cell.actressNameLabel.text = castingList[indexPath.item].name // 배우 이름
+            return cell
         }
-       
         
-        cell.titleLabel.text = recommentList[indexPath.item].name
-        return cell
     }
     
     

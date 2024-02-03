@@ -8,16 +8,67 @@
 import UIKit
 
 class TVDetailCastingTableViewCell: UITableViewCell {
+    
+    let groupTitle = UILabel()
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    let collectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: TVDetailCastingTableViewCell.configureCollectionViewLayout())
+        
+        view.backgroundColor = .black
+        return view
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        contentView.backgroundColor = .black
+        
+        configureHierarchy()
+        configureContraints()
+        configureView()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+extension TVDetailCastingTableViewCell {
+    func configureHierarchy() {
+        contentView.addSubview(groupTitle)
+        contentView.addSubview(collectionView)
+    }
+    
+    func configureContraints() {
+        groupTitle.snp.makeConstraints { make in
+            make.top.leading.equalTo(contentView).inset(10)
+            make.height.equalTo(20)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(groupTitle.snp.bottom).offset(10)
+            make.horizontalEdges.bottom.equalTo(contentView)
+            make.height.equalTo(150) // 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
+        }
+    }
+    
+    func configureView() {
+        groupTitle.font = .boldSystemFont(ofSize: 18)
+        groupTitle.textColor = .white
+    }
+    
+    static func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 80, height: 150) // 추천 드라마 셀의 크기
+        layout.minimumLineSpacing = 30
+        layout.minimumInteritemSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+
+        layout.scrollDirection = .horizontal
+        return layout
     }
 
 }
