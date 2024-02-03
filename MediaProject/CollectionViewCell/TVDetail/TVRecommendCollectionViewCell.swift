@@ -14,20 +14,24 @@ class TVRecommendCollectionViewCell: UICollectionViewCell {
        let view = UILabel()
         view.textAlignment = .center
         view.font = .boldSystemFont(ofSize: 13)
-        view.textColor = .white
+        view.textColor = .systemGray5
         view.numberOfLines = 2
+//        view.backgroundColor = .systemPink
         return view
     }() // 드라마 제목
     
     let posterImageView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
         return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .clear
+        contentView.backgroundColor = .black
+        
         configureHierarchy()
         configureConstraints()
         configureView()
@@ -45,18 +49,20 @@ extension TVRecommendCollectionViewCell {
     func configureHierarchy() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(posterImageView)
-
+ 
     }
     
     func configureConstraints() {
         posterImageView.snp.makeConstraints { make in
-            make.horizontalEdges.top.equalTo(contentView).inset(10)
-            make.height.equalTo(140)
+            make.horizontalEdges.top.equalTo(contentView)
+            make.height.equalTo(180)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(posterImageView.snp.bottom).inset(4)
+            make.top.equalTo(posterImageView.snp.bottom).offset(8) // inset이 아니고 offset이구나..! 이해 완. offset이 원하는 만큼 안나오는 이유? OFFSET(4) titleLabel이 가려짐
             make.horizontalEdges.equalTo(contentView)
+            
+        
         }
     }
     
