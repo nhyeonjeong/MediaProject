@@ -41,6 +41,8 @@
 		8B5A3FAE2B6F381F00B7DD22 /* Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FAD2B6F381F00B7DD22 /* Enumeration.swift */; };
 		8B5A3FB02B6F551400B7DD22 /* TMDBAPI_Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FAF2B6F551400B7DD22 /* TMDBAPI_Request.swift */; };
 		8B5A3FB22B6F74A000B7DD22 /* TVGroupUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FB12B6F74A000B7DD22 /* TVGroupUIView.swift */; };
+		8B5A3FB52B6FBFCE00B7DD22 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FB42B6FBFCE00B7DD22 /* UITableViewCell+Extension.swift */; };
+		8B5A3FB72B6FC30D00B7DD22 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FB62B6FC30D00B7DD22 /* UICollectionViewCell+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		8B5A3FAD2B6F381F00B7DD22 /* Enumeration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumeration.swift; sourceTree = "<group>"; };
 		8B5A3FAF2B6F551400B7DD22 /* TMDBAPI_Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPI_Request.swift; sourceTree = "<group>"; };
 		8B5A3FB12B6F74A000B7DD22 /* TVGroupUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGroupUIView.swift; sourceTree = "<group>"; };
+		8B5A3FB42B6FBFCE00B7DD22 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		8B5A3FB62B6FC30D00B7DD22 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 		8B5A3F312B68DD9700B7DD22 /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				8B5A3FB32B6FBFAC00B7DD22 /* Extension */,
 				8B5A3FA72B6F2BFD00B7DD22 /* CustomView */,
 				8B5A3F9E2B6E237500B7DD22 /* Base */,
 				8B5A3F792B6A422200B7DD22 /* TVDetail */,
@@ -219,6 +224,15 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
+		8B5A3FB32B6FBFAC00B7DD22 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8B5A3FB42B6FBFCE00B7DD22 /* UITableViewCell+Extension.swift */,
+				8B5A3FB62B6FC30D00B7DD22 /* UICollectionViewCell+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -315,8 +329,10 @@
 				8B5A3FAB2B6F32B400B7DD22 /* PosterImageView.swift in Sources */,
 				8B5A3FB02B6F551400B7DD22 /* TMDBAPI_Request.swift in Sources */,
 				8B5A3FB22B6F74A000B7DD22 /* TVGroupUIView.swift in Sources */,
+				8B5A3FB52B6FBFCE00B7DD22 /* UITableViewCell+Extension.swift in Sources */,
 				8B5A3F8F2B6BD75300B7DD22 /* TVModels.swift in Sources */,
 				8B5A3F372B68DD9700B7DD22 /* ViewController.swift in Sources */,
+				8B5A3FB72B6FC30D00B7DD22 /* UICollectionViewCell+Extension.swift in Sources */,
 				8B5A3F992B6CF0FA00B7DD22 /* TVDetailTableViewCell.swift in Sources */,
 				8B5A3F832B6A8C7700B7DD22 /* TVRecommendCollectionViewCell.swift in Sources */,
 				8B5A3FA42B6E842C00B7DD22 /* BaseUIView.swift in Sources */,

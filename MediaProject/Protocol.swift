@@ -7,9 +7,14 @@
 
 import Foundation
 
-//  ViewCon이나 여러 뷰들에 공통적으로 구성되는 함수들 > 프로토콜
+/// ViewCon이나 여러 뷰들에 공통적으로 구성되는 함수들 > 프로토콜
 protocol Configure {
     func configureHierarchy()
     func configureConstraints()
     func configureView()
+}
+
+/// 셀의 identifier
+protocol ReusableCellProtocol {
+    static var identifier: String { get }
 }

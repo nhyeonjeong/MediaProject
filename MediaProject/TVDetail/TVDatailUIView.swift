@@ -15,11 +15,11 @@ class TVDatailUIView: BaseUIView {
         let tableView = UITableView()
         tableView.backgroundColor = Color.backgroundColor
         // 추천 테이블뷰셀
-        tableView.register(TVDetailRecommendTableViewCell.self, forCellReuseIdentifier: "TVDetailRecommendTableViewCell")
+        tableView.register(TVDetailRecommendTableViewCell.self, forCellReuseIdentifier: TVDetailRecommendTableViewCell.identifier)
         // 드라마 디테일 테이블뷰셀
-        tableView.register(TVDetailTableViewCell.self, forCellReuseIdentifier: "TVDetailTableViewCell")
+        tableView.register(TVDetailTableViewCell.self, forCellReuseIdentifier: TVDetailTableViewCell.identifier)
         // 드라마 캐스팅 정보 테이블뷰셀
-        tableView.register(TVDetailCastingTableViewCell.self, forCellReuseIdentifier: "TVDetailCastingTableViewCell")
+        tableView.register(TVDetailCastingTableViewCell.self, forCellReuseIdentifier: TVDetailCastingTableViewCell.identifier)
         
 //        tableView.rowHeight = 280
         tableView.rowHeight = UITableView.automaticDimension // 유동적으로 높이 늘어나도록
