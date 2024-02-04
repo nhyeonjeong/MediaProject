@@ -10,14 +10,15 @@ import SnapKit
 
 class SearchCollectionViewCell: UICollectionViewCell {
     
-    let posterImageView = UIImageView()
+    let posterImageView = PosterImageView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        contentView.backgroundColor = Color.backgroundColor
+        
         configureHierarchy()
         configureConstraints()
-        configureView()
-        
     }
     
     func configureHierarchy() {
@@ -26,13 +27,8 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     func configureConstraints() {
         posterImageView.snp.makeConstraints { make in
-            make.edges.equalTo(contentView).inset(10)
+            make.edges.equalTo(contentView)
         }
-    }
-    
-    func configureView() {
-        posterImageView.contentMode = .scaleAspectFill
-        
     }
     
     required init?(coder: NSCoder) {

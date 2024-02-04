@@ -59,7 +59,7 @@ extension TVDetailRecommendTableViewCell {
             self.collectionView.snp.makeConstraints { make in
                 make.top.equalTo(self.groupTitle.snp.bottom).offset(10)
                 make.horizontalEdges.bottom.equalTo(self.contentView)
-                make.height.equalTo(self.collectionHeight) // 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
+                make.height.equalTo(self.collectionHeight) // dimension후에 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
             }
         }
     }

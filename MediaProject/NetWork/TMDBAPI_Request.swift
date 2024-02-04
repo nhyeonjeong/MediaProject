@@ -10,6 +10,10 @@ import Alamofire
 
 enum TMDBAPI_Request {
     
+    case trending
+    case topRated
+    case popular
+    
     case detail(id: Int)
     case recommend(id: Int)
     case casting(id: Int)
@@ -22,33 +26,26 @@ enum TMDBAPI_Request {
         return .post
     }
     
-    var nilURLString: String {
-        "https://naver.com"
-    }
-    
     var baseUrlString: String {
         "https://api.themoviedb.org/3/"
     }
     
-    var endpoint: URL {
+    var endpoint: String {
         switch self {
+        case .trending:
+            return "\(baseUrlString)trending/tv/week"
+            
+        case .topRated:
+            return "\(baseUrlString)tv/top_rated"
+        case .popular:
+            return "\(baseUrlString)tv/popular"
+            
         case .detail(let id):
-            guard let url = URL(string: "\(baseUrlString)tv/\(id)") else {
-                return URL(string: nilURLString)!
-            }
-            return url
-            
+            return "\(baseUrlString)tv/\(id)"
         case .recommend(let id):
-            guard let url = URL(string: "\(baseUrlString)tv/\(id)/recommendations") else {
-                return URL(string: nilURLString)!
-            }
-            return url
-            
+            return "\(baseUrlString)tv/\(id)/recommendations"
         case .casting(let id):
-            guard let url = URL(string: "\(baseUrlString)tv/\(id)/aggregate_credits") else {
-                return URL(string: nilURLString)!
-            }
-            return url
+            return "\(baseUrlString)tv/\(id)/aggregate_credits"
         }
     }
     
@@ -58,12 +55,10 @@ enum TMDBAPI_Request {
     
     var parameter: Parameters {
         switch self {
-        case .detail:
-            ["language": "ko-KR"]
-        case .recommend:
-            ["language": "ko-KR"]
         case .casting:
             ["": ""]
+        default:
+            ["language": "ko-KR"]
         }
     }
 }

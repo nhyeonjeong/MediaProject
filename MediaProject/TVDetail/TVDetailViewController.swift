@@ -41,17 +41,17 @@ class TVDetailViewController: BaseViewController {
         let group = DispatchGroup()
         
         group.enter()
-        TMDBAPIManager.shared.fetchTVDetails(type: TVDetailModel.self, api: .detail(id: 16420)) { detail in
+        TMDBAPIManager.shared.fetchTVData(type: TVDetailModel.self, api: .detail(id: 16420)) { detail in
             self.detailList = detail
             group.leave()
         }
         group.enter()
-        TMDBAPIManager.shared.fetchTVDetails(type: TVModels.self, api: .recommend(id: 16420)) { tvdatas in
+        TMDBAPIManager.shared.fetchTVData(type: TVModels.self, api: .recommend(id: 16420)) { tvdatas in
             self.recommentList = tvdatas
             group.leave()
         }
         group.enter()
-        TMDBAPIManager.shared.fetchTVDetails(type: TVCastModel.self, api: .casting(id: 16420)) { casts in
+        TMDBAPIManager.shared.fetchTVData(type: TVCastModel.self, api: .casting(id: 16420)) { casts in
             self.castingList = casts
             group.leave()
         }

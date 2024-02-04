@@ -34,7 +34,7 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>                make.height.equalTo(self.collectionHeight) // 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
+				<string>                make.height.equalTo(self.collectionHeight) // dimension후에 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
 </string>
 				<key>leading</key>
 				<string>                make.top.equalTo(self.groupTitle.snp.bottom).offset(10)

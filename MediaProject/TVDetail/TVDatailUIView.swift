@@ -27,6 +27,7 @@ class TVDatailUIView: BaseUIView {
         return tableView
     }()
     
+    // BaseUIView
     override func configureHierarchy() {
         self.addSubview(tvTableView)
     }
