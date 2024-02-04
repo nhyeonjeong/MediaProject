@@ -9,12 +9,10 @@ import UIKit
 
 class TVGroupUIView: BaseUIView {
     
-    let groupTitleLabel = TVGroupLabel()
-    
     let tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = Color.backgroundColor
-        view.rowHeight = 180
+        view.rowHeight = 214 // 계산해서 나온 숫자
         view.register(SearchTableViewCell.self, forCellReuseIdentifier: "SearchTableViewCell")
         
         return view

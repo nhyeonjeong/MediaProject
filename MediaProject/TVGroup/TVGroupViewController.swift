@@ -24,9 +24,7 @@ class TVGroupViewController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = Color.backgroundColor
-        
+ 
         configureTableView()
         fetchTMDB()
     }
@@ -64,19 +62,13 @@ extension TVGroupViewController: UITableViewDelegate, UITableViewDataSource {
         mainView.tableView.dataSource = self
     }
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return groupTitleList.count
-//    }
-//    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return groupTitleList[section]
-//    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groupTitleList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
+        cell.groupTitle.text = groupTitleList[indexPath.row]
         
         cell.collectionView.delegate = self
         cell.collectionView.dataSource = self
