@@ -9,23 +9,22 @@ import UIKit
 
 class TVDetailCastingTableViewCell: UITableViewCell {
     
-    let groupTitle = UILabel()
+    let groupTitle = TVGroupLabel()
 
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: TVDetailCastingTableViewCell.configureCollectionViewLayout())
         
-        view.backgroundColor = .black
+        view.backgroundColor = Color.backgroundColor
         return view
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = .black
+        contentView.backgroundColor = Color.backgroundColor
         
         configureHierarchy()
         configureContraints()
-        configureView()
     }
     
     required init?(coder: NSCoder) {
@@ -52,11 +51,6 @@ extension TVDetailCastingTableViewCell {
             make.horizontalEdges.bottom.equalTo(contentView)
             make.height.equalTo(150) // 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
         }
-    }
-    
-    func configureView() {
-        groupTitle.font = .boldSystemFont(ofSize: 18)
-        groupTitle.textColor = .white
     }
     
     static func configureCollectionViewLayout() -> UICollectionViewFlowLayout {

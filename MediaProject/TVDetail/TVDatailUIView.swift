@@ -13,7 +13,7 @@ class TVDatailUIView: BaseUIView {
     
     lazy var tvTableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .black
+        tableView.backgroundColor = Color.backgroundColor
         // 추천 테이블뷰셀
         tableView.register(TVDetailRecommendTableViewCell.self, forCellReuseIdentifier: "TVDetailRecommendTableViewCell")
         // 드라마 디테일 테이블뷰셀

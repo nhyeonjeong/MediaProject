@@ -12,7 +12,7 @@ class BaseUIView: UIView, Configure {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .black // ?
+        self.backgroundColor = Color.backgroundColor // ?
         configureHierarchy()
         configureConstraints()
         configureView()

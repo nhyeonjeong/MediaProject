@@ -10,38 +10,28 @@ import UIKit
 // 비슷한 드라마 추천 화면
 class TVRecommendCollectionViewCell: UICollectionViewCell {
     
+    let posterImageView = PosterImageView(frame: .zero)
+    
     let titleLabel: UILabel = {
        let view = UILabel()
         view.textAlignment = .center
         view.font = .boldSystemFont(ofSize: 13)
-        view.textColor = .systemGray5
+        view.textColor = Color.lableColor
         view.numberOfLines = 2
-//        view.backgroundColor = .systemPink
         return view
     }() // 드라마 제목
     
-    let posterImageView: UIImageView = {
-        let view = UIImageView(frame: .zero)
-        view.contentMode = .scaleAspectFill
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 10
-        return view
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .black
+        contentView.backgroundColor = Color.backgroundColor
         
         configureHierarchy()
         configureConstraints()
-        configureView()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 extension TVRecommendCollectionViewCell {
@@ -64,9 +54,5 @@ extension TVRecommendCollectionViewCell {
             
         
         }
-    }
-    
-    func configureView() {
-        
     }
 }

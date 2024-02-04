@@ -39,6 +39,9 @@
 		8B5A3FA22B6E23A600B7DD22 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FA12B6E23A600B7DD22 /* Protocol.swift */; };
 		8B5A3FA42B6E842C00B7DD22 /* BaseUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FA32B6E842C00B7DD22 /* BaseUIView.swift */; };
 		8B5A3FA62B6E888F00B7DD22 /* TVDatailUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FA52B6E888F00B7DD22 /* TVDatailUIView.swift */; };
+		8B5A3FA92B6F2C2500B7DD22 /* TVGroupLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FA82B6F2C2500B7DD22 /* TVGroupLabel.swift */; };
+		8B5A3FAB2B6F32B400B7DD22 /* PosterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FAA2B6F32B400B7DD22 /* PosterImageView.swift */; };
+		8B5A3FAE2B6F381F00B7DD22 /* Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FAD2B6F381F00B7DD22 /* Enumeration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		8B5A3FA12B6E23A600B7DD22 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		8B5A3FA32B6E842C00B7DD22 /* BaseUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIView.swift; sourceTree = "<group>"; };
 		8B5A3FA52B6E888F00B7DD22 /* TVDatailUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDatailUIView.swift; sourceTree = "<group>"; };
+		8B5A3FA82B6F2C2500B7DD22 /* TVGroupLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGroupLabel.swift; sourceTree = "<group>"; };
+		8B5A3FAA2B6F32B400B7DD22 /* PosterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImageView.swift; sourceTree = "<group>"; };
+		8B5A3FAD2B6F381F00B7DD22 /* Enumeration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumeration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 		8B5A3F312B68DD9700B7DD22 /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				8B5A3FA72B6F2BFD00B7DD22 /* CustomView */,
 				8B5A3F9E2B6E237500B7DD22 /* Base */,
 				8B5A3F792B6A422200B7DD22 /* TVDetail */,
 				8B5A3F612B69198A00B7DD22 /* CollectionViewCell */,
@@ -123,6 +130,7 @@
 				8B5A3F3D2B68DD9900B7DD22 /* LaunchScreen.storyboard */,
 				8B5A3F402B68DD9900B7DD22 /* Info.plist */,
 				8B5A3FA12B6E23A600B7DD22 /* Protocol.swift */,
+				8B5A3FAD2B6F381F00B7DD22 /* Enumeration.swift */,
 			);
 			path = MediaProject;
 			sourceTree = "<group>";
@@ -203,6 +211,15 @@
 				8B5A3FA32B6E842C00B7DD22 /* BaseUIView.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		8B5A3FA72B6F2BFD00B7DD22 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				8B5A3FA82B6F2C2500B7DD22 /* TVGroupLabel.swift */,
+				8B5A3FAA2B6F32B400B7DD22 /* PosterImageView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,14 +307,17 @@
 			files = (
 				8B5A3F682B693C3500B7DD22 /* TVTopRatedModel.swift in Sources */,
 				8B5A3F572B68EBF400B7DD22 /* TVGroupViewController.swift in Sources */,
+				8B5A3FAE2B6F381F00B7DD22 /* Enumeration.swift in Sources */,
 				8B5A3F9B2B6D3F3D00B7DD22 /* TVDetailCastingTableViewCell.swift in Sources */,
 				8B5A3F6A2B6941A500B7DD22 /* TVPopularModel.swift in Sources */,
+				8B5A3FA92B6F2C2500B7DD22 /* TVGroupLabel.swift in Sources */,
 				8B5A3F7E2B6A82A500B7DD22 /* TVDetailRecommendTableViewCell.swift in Sources */,
 				8B5A3FA02B6E238A00B7DD22 /* BaseViewController.swift in Sources */,
 				8B5A3F7B2B6A424000B7DD22 /* TVDetailViewController.swift in Sources */,
 				8B5A3F502B68DE5300B7DD22 /* TMDBAPIManager.swift in Sources */,
 				8B5A3F8D2B6BD1FF00B7DD22 /* TVDetailModel.swift in Sources */,
 				8B5A3FA62B6E888F00B7DD22 /* TVDatailUIView.swift in Sources */,
+				8B5A3FAB2B6F32B400B7DD22 /* PosterImageView.swift in Sources */,
 				8B5A3F8F2B6BD75300B7DD22 /* TVModels.swift in Sources */,
 				8B5A3F372B68DD9700B7DD22 /* ViewController.swift in Sources */,
 				8B5A3F992B6CF0FA00B7DD22 /* TVDetailTableViewCell.swift in Sources */,

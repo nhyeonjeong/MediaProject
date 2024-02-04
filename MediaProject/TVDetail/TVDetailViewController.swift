@@ -89,13 +89,16 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         } else if indexPath.row == 1 { // 비슷한 컨틴츠 추천
-            
+            print(#function, indexPath.row)
             let cell = tableView.dequeueReusableCell(withIdentifier: "TVDetailRecommendTableViewCell", for: indexPath) as! TVDetailRecommendTableViewCell
             cell.groupTitle.text = list[indexPath.row]
+            cell.collectionWidth = 130
+            cell.collectionHeight = 230
+            
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             cell.collectionView.register(TVRecommendCollectionViewCell.self, forCellWithReuseIdentifier: "TVRecommendCollectionViewCell")
-            cell.collectionView.tag = 1 // 태그 붙이기
+            cell.collectionView.tag = indexPath.row // 태그 붙이기
             cell.collectionView.reloadData()
                 
             return cell
@@ -104,10 +107,13 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "TVDetailCastingTableViewCell", for: indexPath) as! TVDetailCastingTableViewCell
             cell.groupTitle.text = "\(detailData.name)의 \(list[indexPath.row])"
+//            cell.collectionWidth = 80
+//            cell.collectionHeight = 150
+            
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             cell.collectionView.register(TVDetailCastingCollectionViewCell.self, forCellWithReuseIdentifier: "TVDetailCastingCollectionViewCell")
-            cell.collectionView.tag = 2 // 태그 붙이기
+            cell.collectionView.tag = indexPath.row // 태그 붙이기
             cell.collectionView.reloadData()
                 
             return cell

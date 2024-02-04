@@ -10,15 +10,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>12</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>53</string>
+					<string>62</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>53</string>
+					<string>61</string>
 					<key>Timestamp</key>
-					<string>728567487.350481</string>
+					<string>728715661.140283</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,13 +34,14 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>            </string>
+				<string>                make.height.equalTo(self.collectionHeight) // 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
+</string>
 				<key>leading</key>
-				<string>            make.top.equalTo(groupTitle.snp.bottom).offset(10)
-            make.horizontalEdges.bottom.equalTo(contentView)
+				<string>                make.top.equalTo(self.groupTitle.snp.bottom).offset(10)
+                make.horizontalEdges.bottom.equalTo(self.contentView)
 </string>
 				<key>trailing</key>
-				<string>make.height.equalTo(230) // 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
+				<string>            }
         }
     }
 </string>
@@ -100,13 +101,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>62</string>
+					<string>52</string>
 					<key>StartingColumnNumber</key>
-					<string>89</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>61</string>
+					<string>51</string>
 					<key>Timestamp</key>
-					<string>728609678.3390141</string>
+					<string>728709929.51107</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -122,16 +123,61 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>나..! 이해 완. offset이 원하는 만큼 안나오는 이유? OFFSET(4) titleLabel이 가려짐
+				<string>            make.top.equalTo(posterImageView.snp.bottom).offset(8) // inset이 아니고 offset이구나..! 이해 완. offset이 원하는 만큼 안나오는 이유? OFFSET(4) titleLabel이 가려짐
 </string>
 				<key>leading</key>
 				<string>        
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(posterImageView.snp.bottom).offset(8) // inset이 아니고 offset이구</string>
+</string>
 				<key>trailing</key>
 				<string>            make.horizontalEdges.equalTo(contentView)
             
         
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>20</string>
+					<key>StartingColumnNumber</key>
+					<string>36</string>
+					<key>StartingLineNumber</key>
+					<string>19</string>
+					<key>Timestamp</key>
+					<string>728715704.251267</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>MediaProject/TableViewCell/TVDetail/TVDetailRecommendTableViewCell.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>    lazy var collectionView: UICollectionView = {
+        var view = UICollectionView(frame: .zero, collectionViewLayout: TVDetailRecommendTableViewCell.configureCollectionViewLayout(width: self.collectionWidth, height: self.collectionHeight))
+//        DispatchQueue.main.async {</string>
+				<key>trailing</key>
+				<string>            print("선언부 collectionView", self.collectionWidth, self.collectionHeight)
+//            view = UICollectionView(frame: .zero, collectionViewLayout: TVDetailRecommendTableViewCell.configureCollectionViewLayout(width: self.collectionWidth, height: self.collectionHeight))
+            
 </string>
 			</dict>
 			<key>type</key>
