@@ -20,12 +20,9 @@
 		8B5A3F572B68EBF400B7DD22 /* TVGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F562B68EBF400B7DD22 /* TVGroupViewController.swift */; };
 		8B5A3F592B68EECA00B7DD22 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8B5A3F582B68EECA00B7DD22 /* .gitignore */; };
 		8B5A3F5B2B68F05A00B7DD22 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F5A2B68F05A00B7DD22 /* APIKey.swift */; };
-		8B5A3F5D2B68F12900B7DD22 /* TVTrendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F5C2B68F12900B7DD22 /* TVTrendModel.swift */; };
 		8B5A3F602B68F27E00B7DD22 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F5F2B68F27E00B7DD22 /* SearchTableViewCell.swift */; };
 		8B5A3F632B69199F00B7DD22 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F622B69199F00B7DD22 /* SearchCollectionViewCell.swift */; };
 		8B5A3F662B69358400B7DD22 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8B5A3F652B69358400B7DD22 /* Kingfisher */; };
-		8B5A3F682B693C3500B7DD22 /* TVTopRatedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F672B693C3500B7DD22 /* TVTopRatedModel.swift */; };
-		8B5A3F6A2B6941A500B7DD22 /* TVPopularModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F692B6941A500B7DD22 /* TVPopularModel.swift */; };
 		8B5A3F7B2B6A424000B7DD22 /* TVDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F7A2B6A424000B7DD22 /* TVDetailViewController.swift */; };
 		8B5A3F7E2B6A82A500B7DD22 /* TVDetailRecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F7D2B6A82A500B7DD22 /* TVDetailRecommendTableViewCell.swift */; };
 		8B5A3F832B6A8C7700B7DD22 /* TVRecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F822B6A8C7700B7DD22 /* TVRecommendCollectionViewCell.swift */; };
@@ -59,11 +56,8 @@
 		8B5A3F562B68EBF400B7DD22 /* TVGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGroupViewController.swift; sourceTree = "<group>"; };
 		8B5A3F582B68EECA00B7DD22 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8B5A3F5A2B68F05A00B7DD22 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		8B5A3F5C2B68F12900B7DD22 /* TVTrendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTrendModel.swift; sourceTree = "<group>"; };
 		8B5A3F5F2B68F27E00B7DD22 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		8B5A3F622B69199F00B7DD22 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchCollectionViewCell.swift; path = MediaProject/SearchCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
-		8B5A3F672B693C3500B7DD22 /* TVTopRatedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTopRatedModel.swift; sourceTree = "<group>"; };
-		8B5A3F692B6941A500B7DD22 /* TVPopularModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVPopularModel.swift; sourceTree = "<group>"; };
 		8B5A3F7A2B6A424000B7DD22 /* TVDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailViewController.swift; sourceTree = "<group>"; };
 		8B5A3F7D2B6A82A500B7DD22 /* TVDetailRecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailRecommendTableViewCell.swift; sourceTree = "<group>"; };
 		8B5A3F822B6A8C7700B7DD22 /* TVRecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVRecommendCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -144,9 +138,6 @@
 			children = (
 				8B5A3F4F2B68DE5300B7DD22 /* TMDBAPIManager.swift */,
 				8B5A3F5A2B68F05A00B7DD22 /* APIKey.swift */,
-				8B5A3F5C2B68F12900B7DD22 /* TVTrendModel.swift */,
-				8B5A3F672B693C3500B7DD22 /* TVTopRatedModel.swift */,
-				8B5A3F692B6941A500B7DD22 /* TVPopularModel.swift */,
 				8B5A3F8C2B6BD1FF00B7DD22 /* TVDetailModel.swift */,
 				8B5A3F8E2B6BD75300B7DD22 /* TVModels.swift */,
 				8B5A3F902B6BD80F00B7DD22 /* TVCastModel.swift */,
@@ -311,11 +302,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B5A3F682B693C3500B7DD22 /* TVTopRatedModel.swift in Sources */,
 				8B5A3F572B68EBF400B7DD22 /* TVGroupViewController.swift in Sources */,
 				8B5A3FAE2B6F381F00B7DD22 /* Enumeration.swift in Sources */,
 				8B5A3F9B2B6D3F3D00B7DD22 /* TVDetailCastingTableViewCell.swift in Sources */,
-				8B5A3F6A2B6941A500B7DD22 /* TVPopularModel.swift in Sources */,
 				8B5A3FA92B6F2C2500B7DD22 /* TVGroupLabel.swift in Sources */,
 				8B5A3F7E2B6A82A500B7DD22 /* TVDetailRecommendTableViewCell.swift in Sources */,
 				8B5A3FA02B6E238A00B7DD22 /* BaseViewController.swift in Sources */,
@@ -330,7 +319,6 @@
 				8B5A3F372B68DD9700B7DD22 /* ViewController.swift in Sources */,
 				8B5A3F992B6CF0FA00B7DD22 /* TVDetailTableViewCell.swift in Sources */,
 				8B5A3F832B6A8C7700B7DD22 /* TVRecommendCollectionViewCell.swift in Sources */,
-				8B5A3F5D2B68F12900B7DD22 /* TVTrendModel.swift in Sources */,
 				8B5A3FA42B6E842C00B7DD22 /* BaseUIView.swift in Sources */,
 				8B5A3F912B6BD80F00B7DD22 /* TVCastModel.swift in Sources */,
 				8B5A3F332B68DD9700B7DD22 /* AppDelegate.swift in Sources */,

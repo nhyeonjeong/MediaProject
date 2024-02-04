@@ -14,10 +14,15 @@ class TVGroupViewController: BaseViewController {
     let mainView = TVGroupUIView()
     /// 섹션에 나올 타이틀
     let groupTitleList = ["TV Trend", "TV TopRated", "TV Popular"]
-    
-    var trendList: [Trend] = []
-    var topRatedList: [TopRated] = []
-    var popularList: [Popular] = []
+
+    /// 통신 순서
+    let apiOrder: [TMDBAPI_Request] = [.trending, .topRated, .popular]
+    /// Trending, TopRaged, Popular 한 번에 저장
+    var tvModelList: [TVModels] = [
+        TVModels(results: []),
+        TVModels(results: []),
+        TVModels(results: []),
+    ]
     
     override func loadView() {
         view = mainView
@@ -32,22 +37,13 @@ class TVGroupViewController: BaseViewController {
     func fetchTMDB() {
         let group = DispatchGroup()
         
-        group.enter()
-        TMDBAPIManager.shared.fetchTVTrend { results in
-            self.trendList = results
-            group.leave()
-            
-        }
-        group.enter()
-        TMDBAPIManager.shared.fetchTVTopRated { results in
-            self.topRatedList = results
-            group.leave()
-        }
-        
-        group.enter()
-        TMDBAPIManager.shared.fetchTVPopular { results in
-            self.popularList = results
-            group.leave()
+        // 반복으로 줄였는데 쟐 동작함
+        for i in 0..<tvModelList.count {
+            group.enter()
+            TMDBAPIManager.shared.fetchTVData(type: TVModels.self, api: apiOrder[i]) { results in
+                self.tvModelList[i] = results
+                group.leave()
+            }
         }
         
         group.notify(queue: .main) {
@@ -76,7 +72,6 @@ extension TVGroupViewController: UITableViewDelegate, UITableViewDataSource {
         cell.collectionView.tag = indexPath.row // 태그 지정
         
         cell.collectionView.reloadData() // api통신후 tableview를 갱신하면서 collectionview도 갱신해야한다.
-        
         return cell
     }
     
@@ -86,48 +81,24 @@ extension TVGroupViewController: UICollectionViewDelegate, UICollectionViewDataS
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView.tag == 0 {
-            return trendList.count
-        } else if collectionView.tag == 1 {
-            return topRatedList.count
-        } else if collectionView.tag == 2 {
-            print("popular", popularList.count)
-            return popularList.count
-        }
-        return 0
+
+        return tvModelList[collectionView.tag].results.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as! SearchCollectionViewCell
+
+        let item = tvModelList[collectionView.tag].results[indexPath.item]
         
-    
-        if collectionView.tag == 0 {
-            let item = trendList[indexPath.item]
-            let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.posterImage)")
-            cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
+        if let image = item.posterImage {
             
- 
-        } else if collectionView.tag == 1 {
-            let item = topRatedList[indexPath.item]
-            print("top", item.posterImage)
-            let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.posterImage)")
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(image)")
             cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
+        } else {
 
-
-        } else if collectionView.tag == 2 {
-
-            let item = popularList[indexPath.item]
-            if let image = item.posterImage {
-                print("1", image)
-                let url = URL(string: "https://image.tmdb.org/t/p/w500\(image)")
-                cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
-            } else {
-//                let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.backdrop)")
-                cell.posterImageView.image = UIImage(systemName: "star.fill")
-            }
-            
+            cell.posterImageView.image = UIImage(systemName: "star.fill")
         }
-
+        
         return cell
     }
     

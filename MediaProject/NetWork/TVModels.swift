@@ -28,3 +28,5 @@ struct Result: Decodable {
         case backdrop = "backdrop_path"
     }
 }
+
+
