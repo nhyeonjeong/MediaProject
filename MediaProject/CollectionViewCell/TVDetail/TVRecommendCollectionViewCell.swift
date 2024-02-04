@@ -10,6 +10,8 @@ import UIKit
 // 비슷한 드라마 추천 화면
 class TVRecommendCollectionViewCell: UICollectionViewCell {
     
+    let posterImageView = PosterImageView(frame: .zero)
+    
     let titleLabel: UILabel = {
        let view = UILabel()
         view.textAlignment = .center
@@ -20,21 +22,12 @@ class TVRecommendCollectionViewCell: UICollectionViewCell {
         return view
     }() // 드라마 제목
     
-    let posterImageView: UIImageView = {
-        let view = UIImageView(frame: .zero)
-        view.contentMode = .scaleAspectFill
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 10
-        return view
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .black
         
         configureHierarchy()
         configureConstraints()
-        configureView()
         
     }
     
@@ -64,9 +57,5 @@ extension TVRecommendCollectionViewCell {
             
         
         }
-    }
-    
-    func configureView() {
-        
     }
 }

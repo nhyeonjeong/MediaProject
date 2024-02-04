@@ -10,15 +10,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>12</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
 					<string>53</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>53</string>
+					<string>52</string>
 					<key>Timestamp</key>
-					<string>728567487.350481</string>
+					<string>728708865.77703</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,15 +34,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>            </string>
+				<string>            make.height.equalTo(230) // 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
+</string>
 				<key>leading</key>
 				<string>            make.top.equalTo(groupTitle.snp.bottom).offset(10)
             make.horizontalEdges.bottom.equalTo(contentView)
 </string>
 				<key>trailing</key>
-				<string>make.height.equalTo(230) // 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
-        }
+				<string>        }
     }
+    
 </string>
 			</dict>
 			<key>type</key>
@@ -100,13 +101,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>62</string>
+					<string>55</string>
 					<key>StartingColumnNumber</key>
-					<string>89</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>61</string>
+					<string>54</string>
 					<key>Timestamp</key>
-					<string>728609678.3390141</string>
+					<string>728709048.677421</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -122,12 +123,12 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>나..! 이해 완. offset이 원하는 만큼 안나오는 이유? OFFSET(4) titleLabel이 가려짐
+				<string>            make.top.equalTo(posterImageView.snp.bottom).offset(8) // inset이 아니고 offset이구나..! 이해 완. offset이 원하는 만큼 안나오는 이유? OFFSET(4) titleLabel이 가려짐
 </string>
 				<key>leading</key>
 				<string>        
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(posterImageView.snp.bottom).offset(8) // inset이 아니고 offset이구</string>
+</string>
 				<key>trailing</key>
 				<string>            make.horizontalEdges.equalTo(contentView)
             

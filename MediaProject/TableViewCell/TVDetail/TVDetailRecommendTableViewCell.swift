@@ -10,7 +10,7 @@ import SnapKit
 
 class TVDetailRecommendTableViewCell: UITableViewCell {
     
-    let groupTitle = UILabel()
+    let groupTitle = TVGroupLabel()
     
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero
@@ -26,7 +26,6 @@ class TVDetailRecommendTableViewCell: UITableViewCell {
 
         configureHierarchy()
         configureConstraints()
-        configureView()
     }
     
     required init?(coder: NSCoder) {
@@ -53,11 +52,6 @@ extension TVDetailRecommendTableViewCell {
             make.horizontalEdges.bottom.equalTo(contentView)
             make.height.equalTo(230) // 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
         }
-    }
-    
-    func configureView() {
-        groupTitle.font = .boldSystemFont(ofSize: 18)
-        groupTitle.textColor = .white
     }
     
     static func configureCollectionViewLayout() -> UICollectionViewFlowLayout {

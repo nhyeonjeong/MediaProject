@@ -9,8 +9,8 @@ import UIKit
 import SnapKit
 
 class TVDetailTableViewCell: UITableViewCell {
-    let groupTitle = UILabel()
-    let posterImageVies = UIImageView()
+    let groupTitle = TVGroupLabel()
+    let posterImageVies = PosterImageView(frame: .zero)
     let titleLabel = UILabel()
     let popularityLabel = UILabel()
     let overviewLabel = UILabel()
@@ -77,13 +77,6 @@ extension TVDetailTableViewCell {
     }
     
     func configureView() {
-        
-        groupTitle.font = .boldSystemFont(ofSize: 18)
-        groupTitle.textColor = .white
-        
-        posterImageVies.contentMode = .scaleAspectFill
-        posterImageVies.layer.cornerRadius = 10
-        posterImageVies.clipsToBounds = true
         
         titleLabel.textColor = .systemGray5
         titleLabel.font = .boldSystemFont(ofSize: 17)
