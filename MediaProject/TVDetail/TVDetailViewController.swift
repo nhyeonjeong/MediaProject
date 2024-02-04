@@ -14,14 +14,13 @@ class TVDetailViewController: BaseViewController {
     let mainView = TVDatailUIView()
 
     let list = ["TV정보", "비슷한 콘텐츠 추천", "캐스팅 정보"]
-    
-    /// 추천하는 드라마 리스트
-    var recommentList: [TV] = []
+
     /// 드라마 상세소개
-    var detailData: TVDetailModel = TVDetailModel(name: "", overview: "", posterImage: "", popularity: 0, backdrop_path: "", homepageUrl: "", episodeNumber: 0)
-    
+    var detailList: TVDetailModel = TVDetailModel(name: "", overview: "", posterImage: "", popularity: 0, backdrop_path: "", homepageUrl: "", episodeNumber: 0)
+    /// 추천하는 드라마 리스트
+    var recommentList: TVModels = TVModels(results: [Result(name: "", overview: "", popularity: 0, posterImage: "", backdrop: "")])
     /// 드라마 캐스팅 정보 리스트
-    var castingList: [TVCast] = []
+    var castingList: TVCastModel = TVCastModel(cast: [TVCast(name: "", popularity: 0, profile: "", roles: [Role(characterName: "")])])
     
     override func loadView() {
         self.view = mainView
@@ -42,19 +41,17 @@ class TVDetailViewController: BaseViewController {
         let group = DispatchGroup()
         
         group.enter()
-        TMDBAPIManager.shared.fetchTVRecommend { tvdatas in
+        TMDBAPIManager.shared.fetchTVDetails(type: TVDetailModel.self, api: .detail(id: 16420)) { detail in
+            self.detailList = detail
+            group.leave()
+        }
+        group.enter()
+        TMDBAPIManager.shared.fetchTVDetails(type: TVModels.self, api: .recommend(id: 16420)) { tvdatas in
             self.recommentList = tvdatas
             group.leave()
         }
-        
         group.enter()
-        TMDBAPIManager.shared.fetchTVDetails { detail in
-            self.detailData = detail
-            group.leave()
-        }
-        
-        group.enter()
-        TMDBAPIManager.shared.fetchTVAggregate { casts in
+        TMDBAPIManager.shared.fetchTVDetails(type: TVCastModel.self, api: .casting(id: 16420)) { casts in
             self.castingList = casts
             group.leave()
         }
@@ -79,12 +76,12 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TVDetailTableViewCell", for: indexPath) as! TVDetailTableViewCell
             cell.groupTitle.text = list[indexPath.row]
             
-            let url = URL(string: "https://image.tmdb.org/t/p/w500\(detailData.posterImage)")
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(detailList.posterImage)")
             cell.posterImageVies.kf.setImage(with: url)
             
-            cell.titleLabel.text = detailData.name
-            cell.popularityLabel.text = "\(detailData.popularity) 점"
-            cell.overviewLabel.text = detailData.overview
+            cell.titleLabel.text = detailList.name
+            cell.popularityLabel.text = "\(detailList.popularity) 점"
+            cell.overviewLabel.text = detailList.overview
    
             return cell
             
@@ -106,7 +103,7 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
         } else { // 캐스팅 정보
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "TVDetailCastingTableViewCell", for: indexPath) as! TVDetailCastingTableViewCell
-            cell.groupTitle.text = "\(detailData.name)의 \(list[indexPath.row])"
+            cell.groupTitle.text = "\(detailList.name)의 \(list[indexPath.row])"
 //            cell.collectionWidth = 80
 //            cell.collectionHeight = 150
             
@@ -126,9 +123,9 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
 extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 1 {
-            return recommentList.count
+            return recommentList.results.count
         } else { // Tag가 2라면?
-            return castingList.count
+            return castingList.cast.count
         }
     }
     
@@ -136,7 +133,7 @@ extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewData
         if collectionView.tag == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVRecommendCollectionViewCell", for: indexPath) as! TVRecommendCollectionViewCell
             
-            if let image = recommentList[indexPath.item].posterImage {
+            if let image = recommentList.results[indexPath.item].posterImage {
                 let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(image)")
                 cell.posterImageView.kf.setImage(with: imageUrl)
             } else {
@@ -144,15 +141,15 @@ extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewData
             }
             
             
-            cell.titleLabel.text = recommentList[indexPath.item].name
+            cell.titleLabel.text = recommentList.results[indexPath.item].name
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVDetailCastingCollectionViewCell", for: indexPath) as! TVDetailCastingCollectionViewCell
 
-            let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(castingList[indexPath.item].profile)")
+            let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(castingList.cast[indexPath.item].profile)")
             cell.actressImageView.kf.setImage(with: imageUrl, placeholder: UIImage(systemName: "xmark"))
   
-            cell.actressNameLabel.text = castingList[indexPath.item].name // 배우 이름
+            cell.actressNameLabel.text = castingList.cast[indexPath.item].name // 배우 이름
             return cell
         }
         
