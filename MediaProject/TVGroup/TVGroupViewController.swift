@@ -10,8 +10,8 @@ import SnapKit
 import Kingfisher
 
 class TVGroupViewController: BaseViewController {
-    // 섹션에 해보기
-    let tableView = UITableView()
+
+    let mainView = TVGroupUIView()
     /// 섹션에 나올 타이틀
     let groupTitleList = ["TV Trend", "TV TopRated", "TV Popular"]
     
@@ -19,6 +19,9 @@ class TVGroupViewController: BaseViewController {
     var topRatedList: [TopRated] = []
     var popularList: [Popular] = []
     
+    override func loadView() {
+        view = mainView
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,48 +53,26 @@ class TVGroupViewController: BaseViewController {
         }
         
         group.notify(queue: .main) {
-            self.tableView.reloadData()
+            self.mainView.tableView.reloadData()
         }
     }
-    
-    // BaseViewController
-    override func configureHierarchy() {
-        view.addSubview(tableView)
-    }
-    
-    override func configureView() {
-        tableView.backgroundColor = .red
-        
-
-    }
-    
-    override func configureConstraints() {
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-    }
-    
 }
 
 extension TVGroupViewController: UITableViewDelegate, UITableViewDataSource {
     func configureTableView() {
-        tableView.rowHeight = 180
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: "SearchTableViewCell")
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionTitleList.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionTitleList[section]
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return groupTitleList.count
+//    }
+//    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return groupTitleList[section]
+//    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 // 섹션마다 셀은 한 개
+        return groupTitleList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -100,7 +81,7 @@ extension TVGroupViewController: UITableViewDelegate, UITableViewDataSource {
         cell.collectionView.delegate = self
         cell.collectionView.dataSource = self
         print("section", indexPath.section)
-        cell.collectionView.tag = indexPath.section // 태그 지정
+        cell.collectionView.tag = indexPath.row // 태그 지정
         
         cell.collectionView.reloadData() // api통신후 tableview를 갱신하면서 collectionview도 갱신해야한다.
         
@@ -149,7 +130,6 @@ extension TVGroupViewController: UICollectionViewDelegate, UICollectionViewDataS
                 let url = URL(string: "https://image.tmdb.org/t/p/w500\(image)")
                 cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
             } else {
-                print("2", item.backdrop)
 //                let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.backdrop)")
                 cell.posterImageView.image = UIImage(systemName: "star.fill")
             }

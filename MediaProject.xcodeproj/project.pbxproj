@@ -43,6 +43,7 @@
 		8B5A3FAB2B6F32B400B7DD22 /* PosterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FAA2B6F32B400B7DD22 /* PosterImageView.swift */; };
 		8B5A3FAE2B6F381F00B7DD22 /* Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FAD2B6F381F00B7DD22 /* Enumeration.swift */; };
 		8B5A3FB02B6F551400B7DD22 /* TMDBAPI_Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FAF2B6F551400B7DD22 /* TMDBAPI_Request.swift */; };
+		8B5A3FB22B6F74A000B7DD22 /* TVGroupUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3FB12B6F74A000B7DD22 /* TVGroupUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		8B5A3FAA2B6F32B400B7DD22 /* PosterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImageView.swift; sourceTree = "<group>"; };
 		8B5A3FAD2B6F381F00B7DD22 /* Enumeration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumeration.swift; sourceTree = "<group>"; };
 		8B5A3FAF2B6F551400B7DD22 /* TMDBAPI_Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPI_Request.swift; sourceTree = "<group>"; };
+		8B5A3FB12B6F74A000B7DD22 /* TVGroupUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGroupUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				8B5A3F562B68EBF400B7DD22 /* TVGroupViewController.swift */,
+				8B5A3FB12B6F74A000B7DD22 /* TVGroupUIView.swift */,
 			);
 			path = TVGroup;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				8B5A3FA62B6E888F00B7DD22 /* TVDatailUIView.swift in Sources */,
 				8B5A3FAB2B6F32B400B7DD22 /* PosterImageView.swift in Sources */,
 				8B5A3FB02B6F551400B7DD22 /* TMDBAPI_Request.swift in Sources */,
+				8B5A3FB22B6F74A000B7DD22 /* TVGroupUIView.swift in Sources */,
 				8B5A3F8F2B6BD75300B7DD22 /* TVModels.swift in Sources */,
 				8B5A3F372B68DD9700B7DD22 /* ViewController.swift in Sources */,
 				8B5A3F992B6CF0FA00B7DD22 /* TVDetailTableViewCell.swift in Sources */,
