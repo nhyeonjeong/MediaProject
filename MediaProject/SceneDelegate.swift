@@ -13,13 +13,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+ 
         guard let scene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = TVGroupViewController()
+        
+        let tabBarvc = UITabBarController()
+        
+        let firstNav = UINavigationController(rootViewController: TVGroupViewController())
+        let secondNav = UINavigationController(rootViewController: TVDetailViewController())
+        
+        firstNav.tabBarItem = UITabBarItem(title: "TV트랜드", image: UIImage(systemName: "chart.line.uptrend.xyaxis.circle.fill"), tag: 0)
+        secondNav.tabBarItem = UITabBarItem(title: "TV검색", image: UIImage(systemName: "magnifyingglass.circle.fill"), tag: 1)
+        
+        tabBarvc.tabBar.tintColor = Color.PointColor
+        tabBarvc.tabBar.barTintColor = Color.backgroundColor // 스크롤하면 색이 변경되는데 그때 색을 여기서 바꿀 수 있다.
+        tabBarvc.viewControllers = [firstNav, secondNav]
+        
+        window?.rootViewController = tabBarvc
         window?.makeKeyAndVisible()
         
     }

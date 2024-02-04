@@ -8,7 +8,7 @@
 import UIKit
 
 enum Color {
-    static let PointColor: UIColor = .white // 그냥 미리 만들어봄
+    static let PointColor: UIColor = .systemTeal // 그냥 미리 만들어봄
     static let TitleColor: UIColor = .white
     static let lableColor: UIColor = .systemGray5
     static let backgroundColor: UIColor = .black
