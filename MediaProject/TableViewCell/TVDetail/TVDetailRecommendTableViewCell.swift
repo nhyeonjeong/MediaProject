@@ -15,14 +15,13 @@ class TVDetailRecommendTableViewCell: UITableViewCell {
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero
                                               , collectionViewLayout: TVDetailRecommendTableViewCell.configureCollectionViewLayout())
-        view.backgroundColor = .black
-    
+        view.backgroundColor = Color.backgroundColor
         return view
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .black
+        contentView.backgroundColor = Color.backgroundColor
 
         configureHierarchy()
         configureConstraints()
@@ -65,6 +64,5 @@ extension TVDetailRecommendTableViewCell {
         layout.scrollDirection = .horizontal
         return layout
     }
-    
 }
 

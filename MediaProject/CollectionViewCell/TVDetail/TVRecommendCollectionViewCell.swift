@@ -16,25 +16,22 @@ class TVRecommendCollectionViewCell: UICollectionViewCell {
        let view = UILabel()
         view.textAlignment = .center
         view.font = .boldSystemFont(ofSize: 13)
-        view.textColor = .systemGray5
+        view.textColor = Color.lableColor
         view.numberOfLines = 2
-//        view.backgroundColor = .systemPink
         return view
     }() // 드라마 제목
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .black
+        contentView.backgroundColor = Color.backgroundColor
         
         configureHierarchy()
         configureConstraints()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 extension TVRecommendCollectionViewCell {

@@ -18,7 +18,7 @@ class TVDetailTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = .black
+        contentView.backgroundColor = Color.backgroundColor
         configureHierarchy()
         configureConstraints()
         configureView()
@@ -78,14 +78,14 @@ extension TVDetailTableViewCell {
     
     func configureView() {
         
-        titleLabel.textColor = .systemGray5
+        titleLabel.textColor = Color.lableColor
         titleLabel.font = .boldSystemFont(ofSize: 17)
         titleLabel.numberOfLines = 2
         
-        popularityLabel.textColor = .systemGray5
+        popularityLabel.textColor = Color.lableColor
         popularityLabel.font = .systemFont(ofSize: 15)
         
-        overviewLabel.textColor = .systemGray5
+        overviewLabel.textColor = Color.lableColor
 //        overviewLabel.backgroundColor = .black
         overviewLabel.font = .systemFont(ofSize: 15)
         overviewLabel.numberOfLines = 0

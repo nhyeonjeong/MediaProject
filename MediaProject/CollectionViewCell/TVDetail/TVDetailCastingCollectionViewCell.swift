@@ -22,10 +22,7 @@ class TVDetailCastingCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 }
-
 
 extension TVDetailCastingCollectionViewCell {
     func configureHierarchy() {
@@ -52,7 +49,7 @@ extension TVDetailCastingCollectionViewCell {
         actressImageView.layer.cornerRadius = 40
         actressImageView.clipsToBounds = true
         
-        actressNameLabel.textColor = .systemGray5
+        actressNameLabel.textColor = Color.lableColor
         actressNameLabel.font = .systemFont(ofSize: 15)
         actressNameLabel.textAlignment = .center
         actressNameLabel.numberOfLines = 2
