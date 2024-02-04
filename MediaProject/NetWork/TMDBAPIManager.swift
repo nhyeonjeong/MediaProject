@@ -66,50 +66,19 @@ class TMDBAPIManager {
 }
 
 extension TMDBAPIManager {
-    /// 드라마 상세내용 API
-    func fetchTVDetails(completionHandler: @escaping (TVDetailModel) -> Void) {
-        let url = "\(baseURL)tv/16420?language=ko-KR"
+    
+    func fetchTVDetails<T: Decodable>(type: T.Type, api: TMDBAPI_Request, completionHandler: @escaping (T) -> Void) {
         
-        AF.request(url, headers: header).responseDecodable(of: TVDetailModel.self) { response in
+        AF.request(api.endpoint,
+                   method: api.getMethod,
+                   parameters: api.parameter,
+                   encoding: URLEncoding(destination: .queryString),
+                   headers: header).responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let success):
-                print(success)
+//                print(success)
                 completionHandler(success)
             case .failure(let failure):
-                print(failure)
-            }
-        }
-    }
-    
-    /// 비슷한 TV프로그램 추천
-    func fetchTVRecommend(completionHandler: @escaping ([TV]) -> Void) {
-        let url = "\(baseURL)tv/16420/recommendations?language=ko-KR"
-        
-        AF.request(url, headers: header).responseDecodable(of: TVModels.self) { response in
-            switch response.result {
-            case .success(let success):
-                
-                print(success)
-                completionHandler(success.results)
-            case .failure(let failure):
-                
-                dump(failure)
-            }
-        }
-    }
-    
-    /// 캐스팅 정보
-    func fetchTVAggregate(completionHandler: @escaping ([TVCast]) -> Void) {
-        let url = "\(baseURL)tv/16420/aggregate_credits"
-        
-        AF.request(url, headers: header).responseDecodable(of: TVCastModel.self) { response in
-            switch response.result {
-            case .success(let success):
-                
-                print(success)
-                completionHandler(success.cast)
-            case .failure(let failure):
-                
                 print(failure)
             }
         }

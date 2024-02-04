@@ -8,10 +8,10 @@
 import Foundation
 
 struct TVModels: Decodable {
-    let results: [TV]
+    let results: [Result]
 }
 
-struct TV: Decodable {
+struct Result: Decodable {
 //    let id: String
     let name: String
     let overview: String
