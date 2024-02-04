@@ -13,7 +13,8 @@ class TVGroupViewController: BaseViewController {
     // 섹션에 해보기
     let tableView = UITableView()
     /// 섹션에 나올 타이틀
-    let sectionTitleList = ["TV Trend", "TV TopRated", "TV Popular"]
+    let groupTitleList = ["TV Trend", "TV TopRated", "TV Popular"]
+    
     var trendList: [Trend] = []
     var topRatedList: [TopRated] = []
     var popularList: [Popular] = []
@@ -28,19 +29,27 @@ class TVGroupViewController: BaseViewController {
     }
     
     func fetchTMDB() {
+        let group = DispatchGroup()
+        
+        group.enter()
         TMDBAPIManager.shared.fetchTVTrend { results in
             self.trendList = results
-            self.tableView.reloadData()
+            group.leave()
             
         }
-        
+        group.enter()
         TMDBAPIManager.shared.fetchTVTopRated { results in
             self.topRatedList = results
-            self.tableView.reloadData()
+            group.leave()
         }
         
+        group.enter()
         TMDBAPIManager.shared.fetchTVPopular { results in
             self.popularList = results
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
             self.tableView.reloadData()
         }
     }
