@@ -9,25 +9,9 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class TVDetailViewController: UIViewController {
+class TVDetailViewController: BaseViewController {
     
-    lazy var tvTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = .black
-        // 추천 테이블뷰셀
-        tableView.register(TVDetailRecommendTableViewCell.self, forCellReuseIdentifier: "TVDetailRecommendTableViewCell")
-        // 드라마 디테일 테이블뷰셀
-        tableView.register(TVDetailTableViewCell.self, forCellReuseIdentifier: "TVDetailTableViewCell")
-        // 드라마 캐스팅 정보 테이블뷰셀
-        tableView.register(TVDetailCastingTableViewCell.self, forCellReuseIdentifier: "TVDetailCastingTableViewCell")
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-//        tableView.rowHeight = 280
-        tableView.rowHeight = UITableView.automaticDimension // 유동적으로 높이 늘어나도록
-        
-        return tableView
-    }()
+    let mainView = TVDatailUIView()
 
     let list = ["TV정보", "비슷한 콘텐츠 추천", "캐스팅 정보"]
     
@@ -39,14 +23,16 @@ class TVDetailViewController: UIViewController {
     /// 드라마 캐스팅 정보 리스트
     var castingList: [TVCast] = []
     
+    override func loadView() {
+        self.view = mainView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .black
-        
-        configureHierarchy()
-        configureConstraints()
-        
+        mainView.tvTableView.delegate = self
+        mainView.tvTableView.dataSource = self
+        // 네트워크 통신
         fetchTVData()
     }
     
@@ -75,24 +61,10 @@ class TVDetailViewController: UIViewController {
         
         group.notify(queue: .main) {
 
-            self.tvTableView.reloadData()
+            self.mainView.tvTableView.reloadData()
         }
     }
 }
-
-extension TVDetailViewController {
-    func configureHierarchy() {
-        view.addSubview(tvTableView)
-    }
-    
-    func configureConstraints() {
-        tvTableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-            
-        }
-    }
-}
-
 
 extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
  
