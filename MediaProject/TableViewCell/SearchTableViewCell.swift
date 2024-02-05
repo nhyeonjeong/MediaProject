@@ -42,7 +42,7 @@ class SearchTableViewCell: UITableViewCell {
             make.top.equalTo(groupTitle.snp.bottom).offset(4)
             make.horizontalEdges.equalTo(contentView)
             make.bottom.equalTo(contentView).inset(10)
-//            make.height.equalTo(self.collectionHeight) // 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
+//            make.height.equalTo(self.collectionHeight) // 여기는 높이 안써줘도 된다.
         }
     }
     

@@ -12,26 +12,30 @@ class TVDetailRecommendTableViewCell: UITableViewCell {
     
     let groupTitle = TVGroupLabel()
     
-    var collectionWidth: Int = 0 // 130
-    var collectionHeight: Int = 0 // 230
+//    var collectionWidth: Int = 0 // 130
+//    var collectionHeight: Int = 0 // 230
     
     lazy var collectionView: UICollectionView = {
-        var view = UICollectionView(frame: .zero, collectionViewLayout: TVDetailRecommendTableViewCell.configureCollectionViewLayout(width: self.collectionWidth, height: self.collectionHeight))
+        var view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
 //        DispatchQueue.main.async {
-            print("선언부 collectionView", self.collectionWidth, self.collectionHeight)
+//            print("선언부 collectionView", self.collectionWidth, self.collectionHeight)
 //            view = UICollectionView(frame: .zero, collectionViewLayout: TVDetailRecommendTableViewCell.configureCollectionViewLayout(width: self.collectionWidth, height: self.collectionHeight))
             
 //        }
-        
-        view.backgroundColor = Color.backgroundColor
+        view.backgroundColor = .clear
+//        backgroundColor = .blue
         return view
         
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = Color.backgroundColor
-        print(#function, collectionHeight)
+        
+        contentView.backgroundColor = .clear
+//        self.backgroundColor = .gray // 26번쨰 줄의 blue와 겹친다
+        self.backgroundColor = .clear
+        
+//        print(#function, collectionHeight)
         configureHierarchy()
         configureConstraints()
     }
@@ -54,18 +58,19 @@ extension TVDetailRecommendTableViewCell {
             make.top.leading.equalTo(contentView).inset(10)
             make.height.equalTo(20)
         }
-        DispatchQueue.main.async {
-            print(#function, self.collectionHeight)
-            self.collectionView.snp.makeConstraints { make in
-                make.top.equalTo(self.groupTitle.snp.bottom).offset(10)
-                make.horizontalEdges.bottom.equalTo(self.contentView)
-                make.height.equalTo(self.collectionHeight) // dimension후에 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
-            }
+
+//        DispatchQueue.main.async {
+//        print(#function, self.collectionHeight)
+        self.collectionView.snp.makeConstraints { make in
+            make.top.equalTo(self.groupTitle.snp.bottom).offset(10)
+            make.horizontalEdges.bottom.equalTo(self.contentView)
+            make.height.equalTo(230) // 230 // dimension후에 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
         }
+//        }
     }
     
-    static func configureCollectionViewLayout(width: Int, height: Int) -> UICollectionViewFlowLayout {
-        print(#function, width, height)
+    func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
+//        print(#function, width, height)
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 130, height: 230) // 추천 드라마 셀의 크기
         layout.minimumLineSpacing = 10

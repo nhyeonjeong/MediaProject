@@ -14,14 +14,15 @@ class TVDetailCastingTableViewCell: UITableViewCell {
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: TVDetailCastingTableViewCell.configureCollectionViewLayout())
         
-        view.backgroundColor = Color.backgroundColor
+        view.backgroundColor = .clear
         return view
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = Color.backgroundColor
+        contentView.backgroundColor = .clear
+        self.backgroundColor = .clear
         
         configureHierarchy()
         configureContraints()

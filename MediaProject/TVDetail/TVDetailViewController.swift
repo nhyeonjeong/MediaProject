@@ -89,8 +89,8 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
             print(#function, indexPath.row)
             let cell = tableView.dequeueReusableCell(withIdentifier: TVDetailRecommendTableViewCell.identifier, for: indexPath) as! TVDetailRecommendTableViewCell
             cell.groupTitle.text = list[indexPath.row]
-            cell.collectionWidth = 130
-            cell.collectionHeight = 230
+//            cell.collectionWidth = 130
+//            cell.collectionHeight = 230
             
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
