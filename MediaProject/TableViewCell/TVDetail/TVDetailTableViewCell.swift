@@ -18,7 +18,9 @@ class TVDetailTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = Color.backgroundColor
+        contentView.backgroundColor = .clear
+        self.backgroundColor = .clear
+        
         configureHierarchy()
         configureConstraints()
         configureView()
@@ -70,7 +72,7 @@ extension TVDetailTableViewCell {
         
         overviewLabel.snp.makeConstraints { make in
             make.top.equalTo(posterImageVies.snp.bottom).offset(8)
-//            make.height.eq(20) // UITextView로 했을 때는 높이 안 정해주니까 아예 안나오던데 이유가?
+//            make.height.eq(20) // UITextView로 했을 때는 높이 안 정해주니까 아예 안나오던데 이유가? > intrinsicContentSize가 지정되어있지 않으면 설정해줘야한다. / UILabel은 지정되어있음
             make.horizontalEdges.bottom.equalTo(contentView).inset(10)
              
         }

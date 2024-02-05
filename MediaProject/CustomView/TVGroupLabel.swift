@@ -11,7 +11,6 @@ import UIKit
 class TVGroupLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configureView()
         
     }

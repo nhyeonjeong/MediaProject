@@ -13,7 +13,9 @@ class TVDetailCastingCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.backgroundColor = .clear
         
+
         configureHierarchy()
         configureContraints()
         configureView()
@@ -53,6 +55,7 @@ extension TVDetailCastingCollectionViewCell {
         actressNameLabel.font = .systemFont(ofSize: 15)
         actressNameLabel.textAlignment = .center
         actressNameLabel.numberOfLines = 2
+        actressNameLabel.backgroundColor = .clear
     }
     
 }

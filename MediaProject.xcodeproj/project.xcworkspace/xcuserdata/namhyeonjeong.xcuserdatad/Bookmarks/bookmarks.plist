@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>62</string>
+					<string>67</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>61</string>
+					<string>66</string>
 					<key>Timestamp</key>
-					<string>728715661.140283</string>
+					<string>728813704.4022551</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,15 +34,15 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>                make.height.equalTo(self.collectionHeight) // dimension후에 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
+				<string>            make.height.equalTo(230) // 230 // dimension후에 왜 이걸 써야하지 밑에서 configureCollectionViewLayout을 해주는데?
 </string>
 				<key>leading</key>
-				<string>                make.top.equalTo(self.groupTitle.snp.bottom).offset(10)
-                make.horizontalEdges.bottom.equalTo(self.contentView)
+				<string>            make.top.equalTo(self.groupTitle.snp.bottom).offset(10)
+            make.horizontalEdges.bottom.equalTo(self.contentView)
 </string>
 				<key>trailing</key>
-				<string>            }
-        }
+				<string>        }
+//        }
     }
 </string>
 			</dict>
@@ -55,15 +55,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>25</string>
+					<string>55</string>
 					<key>EndingLineNumber</key>
-					<string>72</string>
+					<string>44</string>
 					<key>StartingColumnNumber</key>
-					<string>19</string>
+					<string>39</string>
 					<key>StartingLineNumber</key>
-					<string>72</string>
+					<string>44</string>
 					<key>Timestamp</key>
-					<string>728578502.766382</string>
+					<string>728808814.217849</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -72,67 +72,22 @@
 					<key>payload</key>
 					<dict>
 						<key>relative-path</key>
-						<string>MediaProject/TableViewCell/TVDetail/TVDetailTableViewCell.swift</string>
+						<string>MediaProject/TableViewCell/SearchTableViewCell.swift</string>
 					</dict>
 				</dict>
 			</dict>
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>height</string>
+				<string>collectionHeight</string>
 				<key>leading</key>
-				<string>        overviewLabel.snp.makeConstraints { make in
-            make.top.equalTo(posterImageVies.snp.bottom).offset(8)
-//            make.</string>
-				<key>trailing</key>
-				<string>.eq(20) // UITextView로 했을 때는 높이 안 정해주니까 아예 안나오던데 이유가?
-            make.horizontalEdges.bottom.equalTo(contentView).inset(10)
-             
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>52</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>51</string>
-					<key>Timestamp</key>
-					<string>728709929.51107</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>MediaProject/CollectionViewCell/TVDetail/TVRecommendCollectionViewCell.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>            make.top.equalTo(posterImageView.snp.bottom).offset(8) // inset이 아니고 offset이구나..! 이해 완. offset이 원하는 만큼 안나오는 이유? OFFSET(4) titleLabel이 가려짐
-</string>
-				<key>leading</key>
-				<string>        
-        titleLabel.snp.makeConstraints { make in
-</string>
-				<key>trailing</key>
 				<string>            make.horizontalEdges.equalTo(contentView)
-            
-        
+            make.bottom.equalTo(contentView).inset(10)
+//            make.height.equalTo(self.</string>
+				<key>trailing</key>
+				<string>) // 여기는 높이 안써줘도 된다.
+        }
+    }
 </string>
 			</dict>
 			<key>type</key>
@@ -172,10 +127,10 @@
 </string>
 				<key>leading</key>
 				<string>    lazy var collectionView: UICollectionView = {
-        var view = UICollectionView(frame: .zero, collectionViewLayout: TVDetailRecommendTableViewCell.configureCollectionViewLayout(width: self.collectionWidth, height: self.collectionHeight))
+        var view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
 //        DispatchQueue.main.async {</string>
 				<key>trailing</key>
-				<string>            print("선언부 collectionView", self.collectionWidth, self.collectionHeight)
+				<string>//            print("선언부 collectionView", self.collectionWidth, self.collectionHeight)
 //            view = UICollectionView(frame: .zero, collectionViewLayout: TVDetailRecommendTableViewCell.configureCollectionViewLayout(width: self.collectionWidth, height: self.collectionHeight))
             
 </string>

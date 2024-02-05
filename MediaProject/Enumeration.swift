@@ -13,3 +13,12 @@ enum Color {
     static let lableColor: UIColor = .systemGray5
     static let backgroundColor: UIColor = .black
 }
+
+
+enum CustomError {
+    case failedRequest // 요청이 아예 실패
+    case noData
+    case noResponse
+    case invalidResponse
+    case invalidData
+}

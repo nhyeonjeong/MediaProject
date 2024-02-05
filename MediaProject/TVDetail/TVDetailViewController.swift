@@ -37,22 +37,78 @@ class TVDetailViewController: BaseViewController {
     
     /// 테이블뷰에 Tv정보 네트워크 통신
     func fetchTVData() {
-        
         let group = DispatchGroup()
         
+        // 아래는 Alamofire으로 API통신
+        /*
+         group.enter()
+         TMDBAPIManager.shared.fetchTVData(type: TVDetailModel.self, api: .detail(id: 16420)) { detail in
+             self.detailList = detail
+             group.leave()
+         }
+         group.enter()
+         TMDBAPIManager.shared.fetchTVData(type: TVModels.self, api: .recommend(id: 16420)) { tvdatas in
+             self.recommentList = tvdatas
+             group.leave()
+         }
+         group.enter()
+         TMDBAPIManager.shared.fetchTVData(type: TVCastModel.self, api: .casting(id: 16420)) { casts in
+             self.castingList = casts
+             group.leave()
+         }
+         
+         group.notify(queue: .main) {
+
+             self.mainView.tvTableView.reloadData()
+         }
+         */
+        
+        // 아래는 URLSession으로 API통신
         group.enter()
-        TMDBAPIManager.shared.fetchTVData(type: TVDetailModel.self, api: .detail(id: 16420)) { detail in
-            self.detailList = detail
+        TMDBURLSessionManager.shared.fetchTVData(type: TVDetailModel.self, api: .detail(id: 16420)) { tv, error in
+            if error == nil {
+                guard let tv = tv else {
+                    // 통신은 성공 / 데이터가 없음~
+                    return
+                }
+                print("11")
+                self.detailList = tv
+            } else { // 통신 실패
+                // 알람..?
+            }
+            
+            group.leave()
+        }
+        
+        group.enter()
+        TMDBURLSessionManager.shared.fetchTVData(type: TVModels.self, api: .recommend(id: 16420)) { tv, error in
+            if error == nil {
+                guard let tv = tv else {
+                    // 통신은 성공 / 데이터가 없음~
+                    return
+                }
+                print("22")
+                self.recommentList = tv
+            } else { // 통신 실패
+                // 알람..?
+            }
+            
             group.leave()
         }
         group.enter()
-        TMDBAPIManager.shared.fetchTVData(type: TVModels.self, api: .recommend(id: 16420)) { tvdatas in
-            self.recommentList = tvdatas
-            group.leave()
-        }
-        group.enter()
-        TMDBAPIManager.shared.fetchTVData(type: TVCastModel.self, api: .casting(id: 16420)) { casts in
-            self.castingList = casts
+        TMDBURLSessionManager.shared.fetchTVData(type: TVCastModel.self, api: .casting(id: 16420)) { tv, error in
+            if error == nil {
+
+                guard let tv = tv else {
+                    // 통신은 성공 / 데이터가 없음~
+                    return
+                }
+                self.castingList = tv
+            } else { // 통신 실패
+                // 알람..?
+                print("33")
+            }
+            
             group.leave()
         }
         
@@ -89,8 +145,8 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
             print(#function, indexPath.row)
             let cell = tableView.dequeueReusableCell(withIdentifier: TVDetailRecommendTableViewCell.identifier, for: indexPath) as! TVDetailRecommendTableViewCell
             cell.groupTitle.text = list[indexPath.row]
-            cell.collectionWidth = 130
-            cell.collectionHeight = 230
+//            cell.collectionWidth = 130
+//            cell.collectionHeight = 230
             
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
