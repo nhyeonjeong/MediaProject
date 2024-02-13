@@ -19,7 +19,9 @@ class ProfileViewController: BaseViewController {
     }
     
     let mainView = ProfileView()
-    
+    // 타이틀 (변하지 않음)
+    lazy var profileCases = ProfileData.allCases
+    // 타이틀에 대한 설명
     var profileDataList: [String] = []
     
     override func loadView() {
@@ -59,7 +61,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("numberOfRowsInSection")
-        return profileDataList.count
+        return profileCases.count
 
     }
     
@@ -70,7 +72,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         }
         cell.selectionStyle = .none // 셀 선택 스타일 NONE
         
-        cell.titleText = profileDataList[indexPath.row]
+        cell.titleText = profileCases[indexPath.row].rawValue
         cell.dataText = profileDataList[indexPath.row]
         cell.configureCell()
     
@@ -80,7 +82,20 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
     // cell이 선택되면 화면 전환
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ProfileDetailViewController()
-        vc.dataText = profileDataList[indexPath.row]
+//        vc.dataText = profileDataList[indexPath.row]
+        
+        let row = indexPath.row
+        vc.changeText = { value in
+            // 현재의 원본이 다음 화면으로 넘어간다
+            let data = self.profileDataList[row]
+            
+            // 다음 화면에서 pop하면서 받아온 데이터로 갱신
+            self.profileDataList[row] = value
+            print("profileDataList[indexPath.row] : \(self.profileDataList[row])")
+            // tableView의 특정 셀의 reload
+            tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .fade)
+            return (self.profileCases[row].rawValue, data) // 튜플형태로 반환
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
 

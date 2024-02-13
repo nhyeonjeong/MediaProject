@@ -10,13 +10,12 @@ import SnapKit
 
 class ProfileDetailViewController: BaseViewController {
     
+    var titleText = ""
     var dataText = ""
     
-//    var placeholderText {
-//        "\(dataText) 추가"
-//    }
-//    
-    let dataLabel: UILabel = {
+    var changeText: ((String) -> (String, String))?
+    
+    let titleLabel: UILabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 13)
         view.textColor = Custom.Color.lableColor
@@ -25,6 +24,13 @@ class ProfileDetailViewController: BaseViewController {
     
     lazy var textfield: ProfileTextField = {
         let view = ProfileTextField()
+        // 문자열을 dataText에 저장
+        if let changeText {
+            (titleText, dataText) = changeText("") // 튜플
+        } else {
+            print("changeText함수가 nil")
+            dataText = "-"
+        }
         view.attributedPlaceholder = NSAttributedString(string: dataText, attributes: [.foregroundColor: Custom.Color.placeholderColor])
         view.textColor = Custom.Color.TitleColor
         return view
@@ -41,7 +47,7 @@ class ProfileDetailViewController: BaseViewController {
     }()
     
     override func configureHierarchy() {
-        view.addSubview(dataLabel)
+        view.addSubview(titleLabel)
         view.addSubview(textfield)
         view.addSubview(xbutton)
     }
@@ -50,10 +56,20 @@ class ProfileDetailViewController: BaseViewController {
     func xbuttonClicked() {
         textfield.text = ""
         textfield.placeholder = dataText
+
+    }
+    
+    @objc
+    func rightBarButtonItemClicked() {
+//        if textfield.text! == "" {
+//          필요없음 어차피 ㄹ옵셔널 아님
+//        }
+        _ = changeText?(textfield.text!)
+        navigationController?.popViewController(animated: true)
     }
 
     override func configureConstraints() {
-        dataLabel.snp.makeConstraints { make in
+        titleLabel.snp.makeConstraints { make in
             make.top.leading.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(20)
         }
@@ -68,15 +84,21 @@ class ProfileDetailViewController: BaseViewController {
         }
         
         textfield.snp.makeConstraints { make in
-            make.top.equalTo(dataLabel.snp.bottom).offset(10)
-            make.leading.equalTo(dataLabel)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.leading.equalTo(titleLabel)
             make.trailing.equalTo(xbutton.snp.leading).inset(10)
         }
     }
     override func configureView() {
-        navigationItem.title = dataText
-        dataLabel.text = dataText
-        textfield.placeholder = dataText
+        
+        navigationItem.title = titleText
+        // 네비게이션바아이템버튼
+        let button = UIBarButtonItem(image: Custom.ImageStyle.navigationItemCheck, style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
+        
+        navigationItem.rightBarButtonItem = button
+        
+        titleLabel.text = titleText
+        textfield.text = dataText
         // 여기는 배경색이 있어야 홤녀전환 될 때 안 어색
         view.backgroundColor = Custom.Color.backgroundColor
     }

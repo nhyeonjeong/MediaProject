@@ -16,6 +16,10 @@ enum Custom {
         static let backgroundColor: UIColor = .black
     }
     
+    enum ImageStyle {
+        static let person = UIImage(systemName: "person.fill")
+        static let navigationItemCheck = UIImage(systemName: "checkmark")
+    }
 }
 
 enum CustomError {
