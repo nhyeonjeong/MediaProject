@@ -15,6 +15,9 @@ class ProfileDetailViewController: BaseViewController {
     
     var changeText: ((String) -> (String, String))?
     
+    // self때문에 Lazy var
+    lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewClicked))
+    
     let titleLabel: UILabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 13)
@@ -46,10 +49,22 @@ class ProfileDetailViewController: BaseViewController {
         return view
     }()
     
-    override func configureHierarchy() {
-        view.addSubview(titleLabel)
-        view.addSubview(textfield)
-        view.addSubview(xbutton)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // 여기는 배경색이 있어야 홤녀전환 될 때 안 어색
+        view.backgroundColor = Custom.Color.backgroundColor
+        
+        navigationItem.title = titleText
+        
+        view.addGestureRecognizer(tapGesture)
+        view.endEditing(true)
+        
+        configureTextField()
+    }
+    
+    @objc
+    func viewClicked() {
+        view.endEditing(true)
     }
     
     @objc
@@ -68,6 +83,13 @@ class ProfileDetailViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
 
+    override func configureHierarchy() {
+        view.addSubview(titleLabel)
+        view.addSubview(textfield)
+        view.addSubview(xbutton)
+    }
+    
+    
     override func configureConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.leading.equalTo(view.safeAreaLayoutGuide)
@@ -90,8 +112,7 @@ class ProfileDetailViewController: BaseViewController {
         }
     }
     override func configureView() {
-        
-        navigationItem.title = titleText
+
         // 네비게이션바아이템버튼
         let button = UIBarButtonItem(image: Custom.ImageStyle.navigationItemCheck, style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
         
@@ -99,7 +120,24 @@ class ProfileDetailViewController: BaseViewController {
         
         titleLabel.text = titleText
         textfield.text = dataText
-        // 여기는 배경색이 있어야 홤녀전환 될 때 안 어색
-        view.backgroundColor = Custom.Color.backgroundColor
+
     }
 }
+
+extension ProfileDetailViewController: UITextFieldDelegate {
+    func configureTextField() {
+        print("df")
+        textfield.delegate = self
+        
+    }
+    
+    // 키보드 return키나 엔터 누르면 키보드 내려감
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print(#function)
+        view.endEditing(true)
+        return true
+    }
+
+}
+
+

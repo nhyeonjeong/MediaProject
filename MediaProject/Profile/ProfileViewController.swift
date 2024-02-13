@@ -96,6 +96,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
             tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .fade)
             return (self.profileCases[row].rawValue, data) // 튜플형태로 반환
         }
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 
