@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ProfileDetailViewController: BaseViewController {
+class ProfileEditViewController: BaseViewController {
     
     var titleText = ""
     var dataText = ""
@@ -21,7 +21,7 @@ class ProfileDetailViewController: BaseViewController {
     let titleLabel: UILabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 13)
-        view.textColor = Custom.Color.lableColor
+        view.textColor = Custom.Color.TitleColor
         return view
     }()
     
@@ -124,7 +124,7 @@ class ProfileDetailViewController: BaseViewController {
     }
 }
 
-extension ProfileDetailViewController: UITextFieldDelegate {
+extension ProfileEditViewController: UITextFieldDelegate {
     func configureTextField() {
         print("df")
         textfield.delegate = self

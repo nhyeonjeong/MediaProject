@@ -11,9 +11,11 @@
 		8B2A67602B7A55B50014F6E1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A675F2B7A55B50014F6E1 /* ProfileView.swift */; };
 		8B2A67622B7A5A6D0014F6E1 /* ProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A67612B7A5A6D0014F6E1 /* ProfileTextField.swift */; };
 		8B2A67652B7A5B540014F6E1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A67642B7A5B540014F6E1 /* ProfileTableViewCell.swift */; };
-		8B2A67672B7B30B80014F6E1 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A67662B7B30B80014F6E1 /* ProfileDetailViewController.swift */; };
+		8B2A67672B7B30B80014F6E1 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A67662B7B30B80014F6E1 /* ProfileEditViewController.swift */; };
 		8B2A676E2B7BC4300014F6E1 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A676D2B7BC4300014F6E1 /* VideoModel.swift */; };
 		8B2A67702B7BC66C0014F6E1 /* TVVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A676F2B7BC66C0014F6E1 /* TVVideoViewController.swift */; };
+		8B2A67722B7BD2D20014F6E1 /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A67712B7BD2D20014F6E1 /* ProfileSettingViewController.swift */; };
+		8B2A67742B7BD48A0014F6E1 /* ProfileSettingUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A67732B7BD48A0014F6E1 /* ProfileSettingUIView.swift */; };
 		8B5A3F332B68DD9700B7DD22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F322B68DD9700B7DD22 /* AppDelegate.swift */; };
 		8B5A3F352B68DD9700B7DD22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F342B68DD9700B7DD22 /* SceneDelegate.swift */; };
 		8B5A3F372B68DD9700B7DD22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F362B68DD9700B7DD22 /* ViewController.swift */; };
@@ -58,9 +60,11 @@
 		8B2A675F2B7A55B50014F6E1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8B2A67612B7A5A6D0014F6E1 /* ProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTextField.swift; sourceTree = "<group>"; };
 		8B2A67642B7A5B540014F6E1 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
-		8B2A67662B7B30B80014F6E1 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
+		8B2A67662B7B30B80014F6E1 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		8B2A676D2B7BC4300014F6E1 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		8B2A676F2B7BC66C0014F6E1 /* TVVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVVideoViewController.swift; sourceTree = "<group>"; };
+		8B2A67712B7BD2D20014F6E1 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
+		8B2A67732B7BD48A0014F6E1 /* ProfileSettingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingUIView.swift; sourceTree = "<group>"; };
 		8B5A3F2F2B68DD9700B7DD22 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5A3F322B68DD9700B7DD22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B5A3F342B68DD9700B7DD22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,7 +122,9 @@
 			children = (
 				8B2A675D2B7A52A30014F6E1 /* ProfileViewController.swift */,
 				8B2A675F2B7A55B50014F6E1 /* ProfileView.swift */,
-				8B2A67662B7B30B80014F6E1 /* ProfileDetailViewController.swift */,
+				8B2A67662B7B30B80014F6E1 /* ProfileEditViewController.swift */,
+				8B2A67712B7BD2D20014F6E1 /* ProfileSettingViewController.swift */,
+				8B2A67732B7BD48A0014F6E1 /* ProfileSettingUIView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -162,10 +168,10 @@
 		8B5A3F312B68DD9700B7DD22 /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
-				8B2A675C2B7A52980014F6E1 /* Profile */,
 				8B5A3FB32B6FBFAC00B7DD22 /* Extension */,
 				8B5A3FA72B6F2BFD00B7DD22 /* CustomView */,
 				8B5A3F9E2B6E237500B7DD22 /* Base */,
+				8B2A675C2B7A52980014F6E1 /* Profile */,
 				8B5A3F792B6A422200B7DD22 /* TVDetail */,
 				8B5A3F612B69198A00B7DD22 /* CollectionViewCell */,
 				8B5A3F5E2B68F26800B7DD22 /* TableViewCell */,
@@ -370,6 +376,7 @@
 				8B2A676E2B7BC4300014F6E1 /* VideoModel.swift in Sources */,
 				8B2A67652B7A5B540014F6E1 /* ProfileTableViewCell.swift in Sources */,
 				8B5A3FA92B6F2C2500B7DD22 /* TVGroupLabel.swift in Sources */,
+				8B2A67722B7BD2D20014F6E1 /* ProfileSettingViewController.swift in Sources */,
 				8B5A3F7E2B6A82A500B7DD22 /* TVDetailRecommendTableViewCell.swift in Sources */,
 				8B5A3FA02B6E238A00B7DD22 /* BaseViewController.swift in Sources */,
 				8B5A3F7B2B6A424000B7DD22 /* TVDetailViewController.swift in Sources */,
@@ -380,7 +387,7 @@
 				8B2A67622B7A5A6D0014F6E1 /* ProfileTextField.swift in Sources */,
 				8B5A3FB02B6F551400B7DD22 /* TMDBAPI_Request.swift in Sources */,
 				8B2A675E2B7A52A30014F6E1 /* ProfileViewController.swift in Sources */,
-				8B2A67672B7B30B80014F6E1 /* ProfileDetailViewController.swift in Sources */,
+				8B2A67672B7B30B80014F6E1 /* ProfileEditViewController.swift in Sources */,
 				8B5A3FB22B6F74A000B7DD22 /* TVGroupUIView.swift in Sources */,
 				8B5A3FB52B6FBFCE00B7DD22 /* UITableViewCell+Extension.swift in Sources */,
 				8B5A3F8F2B6BD75300B7DD22 /* TVModels.swift in Sources */,
@@ -398,6 +405,7 @@
 				8B5A3F5B2B68F05A00B7DD22 /* APIKey.swift in Sources */,
 				8B5A3F352B68DD9700B7DD22 /* SceneDelegate.swift in Sources */,
 				8B5A3F632B69199F00B7DD22 /* SearchCollectionViewCell.swift in Sources */,
+				8B2A67742B7BD48A0014F6E1 /* ProfileSettingUIView.swift in Sources */,
 				8B2A67702B7BC66C0014F6E1 /* TVVideoViewController.swift in Sources */,
 				8B5A3F9D2B6E001000B7DD22 /* TVDetailCastingCollectionViewCell.swift in Sources */,
 			);

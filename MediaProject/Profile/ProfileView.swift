@@ -9,16 +9,14 @@ import UIKit
 import SnapKit
 
 class ProfileView: BaseUIView {
-    
-    let profileImageView: UIImageView = {
-        let view = UIImageView(frame: .zero)
-        
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 50
-        view.image = UIImage(systemName: "person.fill")
-        view.contentMode = .scaleAspectFill
-        view.backgroundColor = Custom.Color.lableColor
+
+    let profileImageButton: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage(systemName: "person.fill"), for: .normal)
         view.tintColor = .white
+        
+        view.backgroundColor = Custom.Color.lableColor
+        view.layer.cornerRadius = 50
         return view
     }()
     
@@ -31,12 +29,12 @@ class ProfileView: BaseUIView {
     
     
     override func configureHierarchy() {
-        addSubview(profileImageView)
+        addSubview(profileImageButton)
         addSubview(profileTableView)
     }
     
     override func configureConstraints() {
-        profileImageView.snp.makeConstraints { make in
+        profileImageButton.snp.makeConstraints { make in
             make.size.equalTo(100)
             make.centerX.equalToSuperview()
             make.top.equalTo(safeAreaLayoutGuide).inset(20)
@@ -44,7 +42,7 @@ class ProfileView: BaseUIView {
         
         profileTableView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.top.equalTo(profileImageView.snp.bottom).offset(30)
+            make.top.equalTo(profileImageButton.snp.bottom).offset(30)
             make.bottom.equalTo(safeAreaLayoutGuide)
         }
     }

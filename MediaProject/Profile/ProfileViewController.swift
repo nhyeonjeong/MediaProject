@@ -26,6 +26,7 @@ class ProfileViewController: BaseViewController {
     
     override func loadView() {
         self.view = mainView
+        view.backgroundColor = Custom.Color.backgroundColor
     
     }
 
@@ -38,14 +39,19 @@ class ProfileViewController: BaseViewController {
         }
         
         configureTableView()
-        configureView()
+    }
+    
+    @objc
+    func profileImageClicked() {
+        let vc = ProfileSettingViewController()
         
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     override func configureView() {
-        // 프로필 이미지 버튼
-//        mainView.profileImageView.isUserInteractionEnabled = true
-//        mainView.profileImageView.addtarget
+//         프로필 이미지 버튼
+//        mainView.profileImageButton.isUserInteractionEnabled = true
+        mainView.profileImageButton.addTarget(self, action: #selector(profileImageClicked), for: .touchUpInside)
     }
 
 
@@ -81,7 +87,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
     
     // cell이 선택되면 화면 전환
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ProfileDetailViewController()
+        let vc = ProfileEditViewController()
 //        vc.dataText = profileDataList[indexPath.row]
         
         let row = indexPath.row
