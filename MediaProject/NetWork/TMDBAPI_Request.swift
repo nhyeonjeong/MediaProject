@@ -17,6 +17,7 @@ enum TMDBAPI_Request {
     case detail(id: Int)
     case recommend(id: Int)
     case casting(id: Int)
+    case video(id: Int)
     
     
     var getMethod: HTTPMethod {
@@ -46,16 +47,23 @@ enum TMDBAPI_Request {
             return "\(baseUrlString)tv/\(id)/recommendations"
         case .casting(let id):
             return "\(baseUrlString)tv/\(id)/aggregate_credits"
+        case .video(let id):
+            return "\(baseUrlString)tv/\(id)/videos"
         }
     }
     
     var header: HTTPHeaders {
-        return ["Authorization": APIKey.tmdbAuth]
+        switch self {
+        case .video:
+            return ["Authorization": APIKey.tmdbAuth, "Accept": APIKey.accept]
+        default:
+            return ["Authorization": APIKey.tmdbAuth]
+        }
     }
     
     var parameter: Parameters {
         switch self {
-        case .casting:
+        case .casting, .video:
             ["": ""]
         default:
             ["language": "ko-KR"]

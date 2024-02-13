@@ -15,6 +15,19 @@ class TVDetailTableViewCell: UITableViewCell {
     let popularityLabel = UILabel()
     let overviewLabel = UILabel()
     
+    lazy var videoButton: UIButton = {
+        let view = UIButton()
+        var config = UIButton.Configuration.filled()
+        config.title = "유투브"
+        config.image = UIImage(systemName: "video.fill")
+        config.cornerStyle = .small
+        
+        config.baseBackgroundColor = Custom.Color.lableColor
+        config.baseForegroundColor = Custom.Color.backgroundColor
+        view.configuration = config
+        return view
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -39,6 +52,8 @@ extension TVDetailTableViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(popularityLabel)
         contentView.addSubview(overviewLabel)
+        
+        contentView.addSubview(videoButton)
     }
     
     func configureConstraints() {
@@ -68,6 +83,13 @@ extension TVDetailTableViewCell {
             make.trailing.equalTo(contentView).inset(10)
             make.height.equalTo(20)
             
+        }
+        
+        videoButton.snp.makeConstraints { make in
+            make.top.equalTo(popularityLabel.snp.bottom).offset(4)
+            make.leading.equalTo(titleLabel.snp.leading)
+//            make.trailing.equalTo(contentView).inset(10)
+            make.height.equalTo(20)
         }
         
         overviewLabel.snp.makeConstraints { make in

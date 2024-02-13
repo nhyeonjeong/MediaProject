@@ -16,7 +16,7 @@ class TVDetailViewController: BaseViewController {
     let list = ["TV정보", "비슷한 콘텐츠 추천", "캐스팅 정보"]
 
     /// 드라마 상세소개
-    var detailList: TVDetailModel = TVDetailModel(name: "", overview: "", posterImage: "", popularity: 0, backdrop_path: "", homepageUrl: "", episodeNumber: 0)
+    var detailList: TVDetailModel = TVDetailModel(id: 0, name: "", overview: "", posterImage: "", popularity: 0, backdrop_path: "", homepageUrl: "", episodeNumber: 0)
     /// 추천하는 드라마 리스트
     var recommentList: TVModels = TVModels(results: [])
     /// 드라마 캐스팅 정보 리스트
@@ -117,6 +117,17 @@ class TVDetailViewController: BaseViewController {
             self.mainView.tvTableView.reloadData()
         }
     }
+    
+    @objc
+    func videoButtonClicked() {
+        TMDBAPIManager.shared.fetchTVData(type: VideoModel.self, api: .video(id: detailList.id)) { video in
+            // youtube link완성!
+            let vc = TVVideoViewController()
+            vc.url = "https://www.youtube.com/watch?v=\(video.results[0].key)"
+            
+            self.present(vc, animated: true)
+        }
+    }
 }
 
 extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -138,6 +149,8 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.titleLabel.text = detailList.name
             cell.popularityLabel.text = "\(detailList.popularity) 점"
             cell.overviewLabel.text = detailList.overview
+            
+            cell.videoButton.addTarget(self, action: #selector(videoButtonClicked), for: .touchUpInside)
    
             return cell
             
