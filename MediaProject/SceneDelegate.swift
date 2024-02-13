@@ -22,13 +22,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let firstNav = UINavigationController(rootViewController: TVGroupViewController())
         let secondNav = UINavigationController(rootViewController: TVDetailViewController())
+        let thirdNav = UINavigationController(rootViewController: ProfileViewController())
         
+        thirdNav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+
         firstNav.tabBarItem = UITabBarItem(title: "TV트랜드", image: UIImage(systemName: "chart.line.uptrend.xyaxis.circle.fill"), tag: 0)
         secondNav.tabBarItem = UITabBarItem(title: "TV검색", image: UIImage(systemName: "magnifyingglass.circle.fill"), tag: 1)
+        thirdNav.tabBarItem = UITabBarItem(title: "프로필", image: UIImage(systemName: "person.fill"), tag: 2)
         
-        tabBarvc.tabBar.tintColor = Color.PointColor
-        tabBarvc.tabBar.barTintColor = Color.backgroundColor // 스크롤하면 색이 변경되는데 그때 색을 여기서 바꿀 수 있다.
-        tabBarvc.viewControllers = [firstNav, secondNav]
+        tabBarvc.tabBar.tintColor = Custom.Color.PointColor
+        tabBarvc.tabBar.barTintColor = Custom.Color.backgroundColor // 스크롤하면 색이 변경되는데 그때 색을 여기서 바꿀 수 있다.
+        tabBarvc.viewControllers = [firstNav, secondNav, thirdNav]
         
         window?.rootViewController = tabBarvc
         window?.makeKeyAndVisible()

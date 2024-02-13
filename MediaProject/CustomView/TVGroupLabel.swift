@@ -21,7 +21,7 @@ class TVGroupLabel: UILabel {
     
     func configureView() {
         font = .boldSystemFont(ofSize: 18)
-        textColor = Color.TitleColor
+        textColor = Custom.Color.TitleColor
     }
 
 }

@@ -80,14 +80,14 @@ extension TVDetailTableViewCell {
     
     func configureView() {
         
-        titleLabel.textColor = Color.lableColor
+        titleLabel.textColor = Custom.Color.lableColor
         titleLabel.font = .boldSystemFont(ofSize: 17)
         titleLabel.numberOfLines = 2
         
-        popularityLabel.textColor = Color.lableColor
+        popularityLabel.textColor = Custom.Color.lableColor
         popularityLabel.font = .systemFont(ofSize: 15)
         
-        overviewLabel.textColor = Color.lableColor
+        overviewLabel.textColor = Custom.Color.lableColor
 //        overviewLabel.backgroundColor = .black
         overviewLabel.font = .systemFont(ofSize: 15)
         overviewLabel.numberOfLines = 0

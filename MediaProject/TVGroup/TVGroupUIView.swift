@@ -11,7 +11,7 @@ class TVGroupUIView: BaseUIView {
     
     let tableView: UITableView = {
         let view = UITableView()
-        view.backgroundColor = Color.backgroundColor
+        view.backgroundColor = Custom.Color.backgroundColor
         view.rowHeight = 214 // 계산해서 나온 숫자
         view.register(SearchTableViewCell.self, forCellReuseIdentifier: "SearchTableViewCell")
         

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B2A675E2B7A52A30014F6E1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A675D2B7A52A30014F6E1 /* ProfileViewController.swift */; };
+		8B2A67602B7A55B50014F6E1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A675F2B7A55B50014F6E1 /* ProfileView.swift */; };
+		8B2A67622B7A5A6D0014F6E1 /* ProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A67612B7A5A6D0014F6E1 /* ProfileTextField.swift */; };
+		8B2A67652B7A5B540014F6E1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A67642B7A5B540014F6E1 /* ProfileTableViewCell.swift */; };
+		8B2A67672B7B30B80014F6E1 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A67662B7B30B80014F6E1 /* ProfileDetailViewController.swift */; };
 		8B5A3F332B68DD9700B7DD22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F322B68DD9700B7DD22 /* AppDelegate.swift */; };
 		8B5A3F352B68DD9700B7DD22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F342B68DD9700B7DD22 /* SceneDelegate.swift */; };
 		8B5A3F372B68DD9700B7DD22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A3F362B68DD9700B7DD22 /* ViewController.swift */; };
@@ -47,6 +52,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B2A675D2B7A52A30014F6E1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8B2A675F2B7A55B50014F6E1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8B2A67612B7A5A6D0014F6E1 /* ProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTextField.swift; sourceTree = "<group>"; };
+		8B2A67642B7A5B540014F6E1 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		8B2A67662B7B30B80014F6E1 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		8B5A3F2F2B68DD9700B7DD22 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5A3F322B68DD9700B7DD22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B5A3F342B68DD9700B7DD22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +109,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B2A675C2B7A52980014F6E1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8B2A675D2B7A52A30014F6E1 /* ProfileViewController.swift */,
+				8B2A675F2B7A55B50014F6E1 /* ProfileView.swift */,
+				8B2A67662B7B30B80014F6E1 /* ProfileDetailViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		8B2A67632B7A5B3A0014F6E1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8B2A67642B7A5B540014F6E1 /* ProfileTableViewCell.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		8B5A3F262B68DD9700B7DD22 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +147,7 @@
 		8B5A3F312B68DD9700B7DD22 /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				8B2A675C2B7A52980014F6E1 /* Profile */,
 				8B5A3FB32B6FBFAC00B7DD22 /* Extension */,
 				8B5A3FA72B6F2BFD00B7DD22 /* CustomView */,
 				8B5A3F9E2B6E237500B7DD22 /* Base */,
@@ -166,6 +195,7 @@
 		8B5A3F5E2B68F26800B7DD22 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				8B2A67632B7A5B3A0014F6E1 /* Profile */,
 				8B5A3F7C2B6A81A600B7DD22 /* TVDetail */,
 				8B5A3F5F2B68F27E00B7DD22 /* SearchTableViewCell.swift */,
 			);
@@ -223,6 +253,7 @@
 			children = (
 				8B5A3FA82B6F2C2500B7DD22 /* TVGroupLabel.swift */,
 				8B5A3FAA2B6F32B400B7DD22 /* PosterImageView.swift */,
+				8B2A67612B7A5A6D0014F6E1 /* ProfileTextField.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -322,6 +353,7 @@
 				8B5A3F572B68EBF400B7DD22 /* TVGroupViewController.swift in Sources */,
 				8B5A3FAE2B6F381F00B7DD22 /* Enumeration.swift in Sources */,
 				8B5A3F9B2B6D3F3D00B7DD22 /* TVDetailCastingTableViewCell.swift in Sources */,
+				8B2A67652B7A5B540014F6E1 /* ProfileTableViewCell.swift in Sources */,
 				8B5A3FA92B6F2C2500B7DD22 /* TVGroupLabel.swift in Sources */,
 				8B5A3F7E2B6A82A500B7DD22 /* TVDetailRecommendTableViewCell.swift in Sources */,
 				8B5A3FA02B6E238A00B7DD22 /* BaseViewController.swift in Sources */,
@@ -330,12 +362,16 @@
 				8B5A3F8D2B6BD1FF00B7DD22 /* TVDetailModel.swift in Sources */,
 				8B5A3FA62B6E888F00B7DD22 /* TVDatailUIView.swift in Sources */,
 				8B5A3FAB2B6F32B400B7DD22 /* PosterImageView.swift in Sources */,
+				8B2A67622B7A5A6D0014F6E1 /* ProfileTextField.swift in Sources */,
 				8B5A3FB02B6F551400B7DD22 /* TMDBAPI_Request.swift in Sources */,
+				8B2A675E2B7A52A30014F6E1 /* ProfileViewController.swift in Sources */,
+				8B2A67672B7B30B80014F6E1 /* ProfileDetailViewController.swift in Sources */,
 				8B5A3FB22B6F74A000B7DD22 /* TVGroupUIView.swift in Sources */,
 				8B5A3FB52B6FBFCE00B7DD22 /* UITableViewCell+Extension.swift in Sources */,
 				8B5A3F8F2B6BD75300B7DD22 /* TVModels.swift in Sources */,
 				8B5A3F372B68DD9700B7DD22 /* ViewController.swift in Sources */,
 				8B5A3FB72B6FC30D00B7DD22 /* UICollectionViewCell+Extension.swift in Sources */,
+				8B2A67602B7A55B50014F6E1 /* ProfileView.swift in Sources */,
 				8BB4A6A72B7120A300D1AB2C /* TMDBURLSessionManager.swift in Sources */,
 				8B5A3F992B6CF0FA00B7DD22 /* TVDetailTableViewCell.swift in Sources */,
 				8B5A3F832B6A8C7700B7DD22 /* TVRecommendCollectionViewCell.swift in Sources */,

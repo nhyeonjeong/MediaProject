@@ -14,14 +14,14 @@ class SearchTableViewCell: UITableViewCell {
     
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: SearchTableViewCell.configureCollectionViewLayout())
-        view.backgroundColor = Color.backgroundColor
+        view.backgroundColor = Custom.Color.backgroundColor
         return view
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = Color.backgroundColor
+        contentView.backgroundColor = Custom.Color.backgroundColor
         
         configureHierarchy()
         configureConstraints()

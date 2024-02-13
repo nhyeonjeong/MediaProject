@@ -15,7 +15,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.backgroundColor = Color.backgroundColor
+        contentView.backgroundColor = Custom.Color.backgroundColor
         
         configureHierarchy()
         configureConstraints()

@@ -51,7 +51,7 @@ extension TVDetailCastingCollectionViewCell {
         actressImageView.layer.cornerRadius = 40
         actressImageView.clipsToBounds = true
         
-        actressNameLabel.textColor = Color.lableColor
+        actressNameLabel.textColor = Custom.Color.lableColor
         actressNameLabel.font = .systemFont(ofSize: 15)
         actressNameLabel.textAlignment = .center
         actressNameLabel.numberOfLines = 2
