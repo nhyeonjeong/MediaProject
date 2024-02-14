@@ -16,7 +16,7 @@ class TVRecommendCollectionViewCell: UICollectionViewCell {
        let view = UILabel()
         view.textAlignment = .center
         view.font = .boldSystemFont(ofSize: 13)
-        view.textColor = Color.lableColor
+        view.textColor = Custom.Color.lableColor
         view.numberOfLines = 2
         view.backgroundColor = .clear
         return view

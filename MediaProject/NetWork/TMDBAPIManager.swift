@@ -13,7 +13,7 @@ class TMDBAPIManager {
     static let shared = TMDBAPIManager()
     
     func fetchTVData<T: Decodable>(type: T.Type, api: TMDBAPI_Request, completionHandler: @escaping (T) -> Void) {
-        
+
         AF.request(api.endpoint,
                    method: api.getMethod,
                    parameters: api.parameter,
@@ -28,4 +28,5 @@ class TMDBAPIManager {
             }
         }
     }
+    
 }

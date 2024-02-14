@@ -15,6 +15,19 @@ class TVDetailTableViewCell: UITableViewCell {
     let popularityLabel = UILabel()
     let overviewLabel = UILabel()
     
+    lazy var videoButton: UIButton = {
+        let view = UIButton()
+        var config = UIButton.Configuration.filled()
+        config.title = "유투브"
+        config.image = UIImage(systemName: "video.fill")
+        config.cornerStyle = .small
+        
+        config.baseBackgroundColor = Custom.Color.lableColor
+        config.baseForegroundColor = Custom.Color.backgroundColor
+        view.configuration = config
+        return view
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -39,6 +52,8 @@ extension TVDetailTableViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(popularityLabel)
         contentView.addSubview(overviewLabel)
+        
+        contentView.addSubview(videoButton)
     }
     
     func configureConstraints() {
@@ -70,6 +85,13 @@ extension TVDetailTableViewCell {
             
         }
         
+        videoButton.snp.makeConstraints { make in
+            make.top.equalTo(popularityLabel.snp.bottom).offset(4)
+            make.leading.equalTo(titleLabel.snp.leading)
+//            make.trailing.equalTo(contentView).inset(10)
+            make.height.equalTo(20)
+        }
+        
         overviewLabel.snp.makeConstraints { make in
             make.top.equalTo(posterImageVies.snp.bottom).offset(8)
 //            make.height.eq(20) // UITextView로 했을 때는 높이 안 정해주니까 아예 안나오던데 이유가? > intrinsicContentSize가 지정되어있지 않으면 설정해줘야한다. / UILabel은 지정되어있음
@@ -80,14 +102,14 @@ extension TVDetailTableViewCell {
     
     func configureView() {
         
-        titleLabel.textColor = Color.lableColor
+        titleLabel.textColor = Custom.Color.lableColor
         titleLabel.font = .boldSystemFont(ofSize: 17)
         titleLabel.numberOfLines = 2
         
-        popularityLabel.textColor = Color.lableColor
+        popularityLabel.textColor = Custom.Color.lableColor
         popularityLabel.font = .systemFont(ofSize: 15)
         
-        overviewLabel.textColor = Color.lableColor
+        overviewLabel.textColor = Custom.Color.lableColor
 //        overviewLabel.backgroundColor = .black
         overviewLabel.font = .systemFont(ofSize: 15)
         overviewLabel.numberOfLines = 0

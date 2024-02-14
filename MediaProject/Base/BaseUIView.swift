@@ -12,7 +12,7 @@ class BaseUIView: UIView, Configure {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = Color.backgroundColor // 여기만 검은색하고 나머지는 clear
+        self.backgroundColor = Custom.Color.backgroundColor // 여기만 검은색하고 나머지는 clear
         configureHierarchy()
         configureConstraints()
         configureView()
